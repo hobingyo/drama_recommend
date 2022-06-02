@@ -13,23 +13,18 @@
 -   06.02.22 ~ 06.14.22
 
 ### 멤버구성 & 파트분배
--   이호빈 -> frontend, 발표 및 영상제작
--   문명주 -> frontend, R&D 담당
--   백우진 -> 메인 git, backend(user)
--   최준헌 -> backend(post)
-
--   이호빈 <a href="https://github.com/DingoFreestyle"><img 
+-   <a href="https://github.com/DingoFreestyle"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
-          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a>
--   문명주 <a href="https://github.com/Moonmooj"><img 
+          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 이호빈 -> frontend, 발표 및 영상제작
+-   <a href="https://github.com/Moonmooj"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
-          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a>
--   백우진 <a href="https://github.com/woojin9606"><img 
+          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 문명주 -> frontend, R&D 담당
+-   <a href="https://github.com/woojin9606"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
-          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a>
--   최준헌 <a href="https://github.com/attabooi"><img 
+          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 백우진 -> 메인 git, backend(user)
+-   <a href="https://github.com/attabooi"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
-          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a>
+          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 최준헌 -> backend(post)
 
 ### 적용
 
