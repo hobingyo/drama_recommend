@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import ArticleModel
+from .models import ArticleModel, ArticleComment
 from django.contrib.auth.decorators import login_required
 
 
@@ -36,3 +36,22 @@ def article(request):
                                                  cast=cast, aired_date=aired_date, episode=episode, aged=aged, rating = 0)
         my_article.save()
         return redirect('/article')
+
+@login_required
+def detail_article(request, id):
+    my_article = ArticleModel.objects.get(id=id)
+    return render(request, 'article/article_detail.html', {'article': my_article})
+
+@login_required
+def write_comment(request, id):
+    if request.method == 'POST':
+        current_tweet = ArticleModel.objects.get(id=id)
+        user = request.user
+
+        my_comment = ArticleComment()
+        my_comment.author = user
+        my_comment.comment = request.POST.get('comment', '')
+        my_comment.rating = int(request.POST.get('rating', ''))
+        my_comment.tweet = current_tweet
+        my_comment.save()
+        return redirect('/article/'+str(id))
