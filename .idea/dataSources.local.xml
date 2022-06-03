@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PY-213.6777.50">
-    <data-source name="db" uuid="6481ed3e-fd6e-4bed-affc-cd3e963b4ccb">
+    <data-source name="db [2]" uuid="85860bf6-1438-4b78-8b7a-e118b7e11df3">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
-      <secret-storage>forget</secret-storage>
       <schema-mapping />
     </data-source>
   </component>

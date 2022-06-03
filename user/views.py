@@ -5,12 +5,7 @@ from django.contrib.auth import get_user_model # 사용자가 데이터베이스
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
-def home(request):
-    user = request.user.is_authenticated
-    if user:
-        return render(request, 'base.html')
-    else:
-        return redirect('/sign-in')
+
 
 # Create your views here.
 def sign_up_view(request):
