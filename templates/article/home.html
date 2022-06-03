@@ -97,17 +97,21 @@
 
 <div id="article">
     <div class="row row-cols-1 row-cols-md-4 g-4">
-        {% for al in article %}
+        {% for ac in article %}
             <div class="col">
                 <div class="card h-100">
-                    <img src="{{ al.poster }}" class="card-img-top" style="height: 450px">
+                    <a href="/article/{{ ac.id }}" style="text-decoration-line : none; color: black;">
+                    <img src="{{ ac.poster }}" class="card-img-top" style="height: 450px">
+                    </a>
                     <div class="card-body">
-                        <h5 class="card-title">{{ al.title }}</h5>
+                        <a href="/article/{{ ac.id }}" style="text-decoration-line : none; color: black;">
+                        <h5 class="card-title">{{ ac.title }}</h5>
+                        </a>
                         <p class="card-text"></p>
                     </div>
                 </div>
             </div>
-        {% endfor %}
+            {% endfor %}
     </div>
 </div>
 <div id="upload">
@@ -116,8 +120,6 @@
         <button type="button" class="modal-post" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 data-bs-whatever="@fat">게시물 작성
         </button>
-
-
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
