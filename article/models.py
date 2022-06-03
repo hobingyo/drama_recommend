@@ -8,6 +8,7 @@ class ArticleModel(models.Model):
 
     author = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     title = models.CharField(max_length=256)
+    poster = models.CharField(max_length=256, default='')
     synopsis = models.CharField(max_length=256)
     genre = models.CharField(max_length=256)
     tags = models.CharField(max_length=256)
