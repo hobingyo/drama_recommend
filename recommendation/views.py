@@ -13,7 +13,7 @@ from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 
 
 def content_recommendation(int):
-    df = pd.read_csv('../top100_kdrama.csv')
+    df = pd.read_csv('top100_kdrama_ko.csv')
 
     mecab = MeCab.Tagger("-Owakati")
     mecab.parse("kill bill").split()
@@ -24,12 +24,8 @@ def content_recommendation(int):
         df['token'][i] = mecab.parse(df['Genre'][i]).split()
         df['token'][i].extend(mecab.parse(df['Tags'][i]).split())
 
-    # 유사도와 상관없을 것 같은 단어 제거해주기, 영어보다 한글단어가 더 정확도가 높을 것 같다.
-    # 한글과 달리, 영어로 이름을 표기하면 글자 하나하나의 유사도를 찾아서 의도와 다른 분석이 됨.
-    list1 = ['From', 'A', 'The', 'In', 'is', 'a', 'to', 'To', 'by', ',', '.', 's', "'", '"', '-', 'The', 'of',
-             'their',
-             'but', 'and', 'that', 'are', 'at', 'the', 'in', 'have', 'who', 'as', 'he', 'his', 'she', 'her', 'they',
-             'their']
+    # 유사도와 상관없을 것 같은 요소 제거해주기
+    list1 = [',', '.', 's', "'", '"', '-', '…', '(', ')', '년']
 
     for j in list1:
         for i in range(0, len(df['token'])):
@@ -39,6 +35,7 @@ def content_recommendation(int):
     documents = [TaggedDocument(doc, [i]) for i, doc in enumerate(df['token'])]
     model = Doc2Vec(documents, vector_size=100, window=3, epochs=10, min_count=0, workers=4)
     inferred_doc_vec = model.infer_vector(df['token'][int])
+    # model.infer_vector(df['token'][int]) 함수에 넣어준 인덱스 값의 드라마 선택
     most_similar_docs = model.docvecs.most_similar([inferred_doc_vec], topn=10)
 
     for index, similarity in most_similar_docs:
