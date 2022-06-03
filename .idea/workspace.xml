@@ -1,128 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edede4df-82d8-4933-b530-4d00c0d686bf" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/article/migrations/0004_articlemodel_poster.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/18 어게인.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/괴물.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/낭만닥터 김사부 2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/당신이 잠든 사이에.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/디어 마이 프렌즈.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/라이프 온 마스.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/라켓소년단.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/마우스.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/마이 네임.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/모범택시.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/미생.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/손 The Guest.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/스위트홈.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/시카고 타자기.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/아스달 연대기 part2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/아스달 연대기 part3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/악마판사.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/역도요정 김복주.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/오월의 청춘.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/육룡이 나르샤.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/킬미, 힐미.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/킹덤2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/펜트하우스.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/펜트하우스2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/poster/피고인.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/article/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DramaRecommend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DramaRecommend.iml" afterDir="false" />
+    <list default="true" id="b7f7b2eb-de13-446f-8484-6315a80a6ada" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/85860bf6-1438-4b78-8b7a-e118b7e11df3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/85860bf6-1438-4b78-8b7a-e118b7e11df3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/85860bf6-1438-4b78-8b7a-e118b7e11df3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/upload.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
-    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2A0hh5CNDcDv8Ly7fdEnfPddSX0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\82107\OneDrive\문서\drama_recommend\static\img" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="drama_recommend" type="Python.DjangoServer" factoryName="Django server">
-      <module name="DramaRecommend" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="DramaRecommend.settings" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\82107\OneDrive\문서\drama_recommend\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="edede4df-82d8-4933-b530-4d00c0d686bf" name="변경" comment="" />
-      <created>1654152526560</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1654152526560</updated>
-      <workItem from="1654152534319" duration="2805000" />
-      <workItem from="1654227060347" duration="17746000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
