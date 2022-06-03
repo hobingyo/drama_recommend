@@ -47,11 +47,11 @@
                 <label for="nickname" style="color: white">닉네임</label>
                 <input type="nickname" class="form-control" id="nickname" name="nickname">
                 {% if error %}
-                    <div class="alert alert-danger" role="alert" style="height: 58px; font-size: 12px">
+                    <div class="alert alert-danger" role="alert" style="height: 58px; font-size: 13px; width: 300px; z-index: 1; position:absolute;">
                         {{ error }}
                     </div>
                 {% endif %}
-                <button type="submit" class="sign-in"><b> 회원가입 </b></button>
+                <button type="submit" class="sign-in" style="position:relative;"><b> 회원가입 </b></button>
             </div>
         </div>
     </form>
