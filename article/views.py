@@ -40,7 +40,8 @@ def article(request):
 @login_required
 def detail_article(request, id):
     my_article = ArticleModel.objects.get(id=id)
-    return render(request, 'article/article_detail.html', {'article': my_article})
+    article_comment = ArticleComment.objects.filter(tweet_id=id).order_by('-created_at')
+    return render(request, 'article/article_detail.html', {'article': my_article, 'comment': article_comment})
 
 @login_required
 def write_comment(request, id):
