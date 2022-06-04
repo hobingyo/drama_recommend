@@ -5,7 +5,12 @@
     <title>상세페이지</title>
 </head>
 <body>
-<a href="/article/like/{{ article.id }}">찜하기</a>
+
+{% if like %}
+    <a href="/article/like/{{ article.id }}" class="card-link">[찜 취소]</a>
+{% else %}
+    <a href="/article/like/{{ article.id }}" class="card-link">[찜]</a>
+{% endif %}
 <div>
     <img src="{{ article.poster }}">
     <p>제목 : {{ article.title }}</p>
