@@ -6,4 +6,5 @@ urlpatterns = [
     path('article/', views.article, name='article'),
     path('article/<int:id>', views.detail_article, name='detail-article'),
     path('article/comment/<int:id>', views.write_comment, name='write-comment'),
+    path('article/like/<int:id>', views.like, name='like'),
 ]

@@ -2,22 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>상세페이지</title>
 </head>
 <body>
-<img src="{{ article.poster }}">
-<p>제목 : {{ article.title }}</p>
-<p>연령 : {{ article.aged }}</p>
-<p>방영일 : {{ article.aired_date }}</p>
-<p>게시물 작성자 : {{ article.author }}</p>
-<p>등장인물 : {{ article.cast }}</p>
-<p>게시물 작성 시간 : {{ article.created_at }}</p>
-<p>에피소드 수 : {{ article.episode }}</p>
-<p>장르 : {{ article.genre }}</p>
-<p>별점 : {{ article.rating }}</p>
-<p>줄거리 : {{ article.synopsis }}</p>
-<p>태그 : {{ article.tags }}</p>
-<p>수정 시간 : {{ article.updated_at }}</p>
+<a href="/article/like/{{ article.id }}">찜하기</a>
+<div>
+    <img src="{{ article.poster }}">
+    <p>제목 : {{ article.title }}</p>
+    <p>연령 : {{ article.aged }}</p>
+    <p>방영일 : {{ article.aired_date }}</p>
+    <p>게시물 작성자 : {{ article.author }}</p>
+    <p>등장인물 : {{ article.cast }}</p>
+    <p>게시물 작성 시간 : {{ article.created_at }}</p>
+    <p>에피소드 수 : {{ article.episode }}</p>
+    <p>장르 : {{ article.genre }}</p>
+    <p>별점 : {{ article.rating }}</p>
+    <p>줄거리 : {{ article.synopsis }}</p>
+    <p>태그 : {{ article.tags }}</p>
+    <p>수정 시간 : {{ article.updated_at }}</p>
+</div>
+
 
 <form class="input-group mb-3" action="/article/comment/{{ article.id }}" method="post">
     {% csrf_token %}

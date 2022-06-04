@@ -30,3 +30,10 @@ class ArticleComment(models.Model):
     rating = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class UserLike(models.Model):
+    class Meta:
+        db_table = "like"
+
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    article = models.ForeignKey(ArticleModel, on_delete=models.CASCADE)

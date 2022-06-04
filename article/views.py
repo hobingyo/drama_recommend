@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import ArticleModel, ArticleComment
+from .models import ArticleModel, ArticleComment, UserLike
 from django.contrib.auth.decorators import login_required
 
 
@@ -56,3 +56,14 @@ def write_comment(request, id):
         my_comment.tweet = current_tweet
         my_comment.save()
         return redirect('/article/'+str(id))
+
+@login_required
+def like(request, id):
+    me = request.user
+    article = ArticleModel.objects.get(id=id)
+    my_like = UserLike()
+    my_like.article_id = article.id
+    my_like.user_id = me.id
+    my_like.save()
+
+    return redirect('/article')
