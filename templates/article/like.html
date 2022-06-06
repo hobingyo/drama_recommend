@@ -81,9 +81,15 @@
     <div class="menu ">
         <a href="/logout" style="word-spacing:50px; color: white; display: block "> 로그아웃 </a>
     </div>
-    <input class="form-control me-2 menu"
-           style="width: 265px; height: 35px; margin-left: 300px;margin-bottom: 10px  "
-           type="search" placeholder="검색" aria-label="Search">
+    <div>
+        <form action="/search/" method="post">
+            {% csrf_token %}
+            <input class="form-control me-2 menu"
+                   style="width: 265px; height: 35px; margin-left: 300px;margin-bottom: 10px  "
+                   type="search" placeholder="검색" aria-label="Search" name="search" id="search">
+            <button>검색</button>
+        </form>
+    </div>
 </div>
 <div class="articles" id="article">
     <div class="row row-cols-1 row-cols-md-4 g-4">
