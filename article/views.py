@@ -18,7 +18,9 @@ def article(request):
         user = request.user.is_authenticated
         if user:
             all_article = ArticleModel.objects.all()
-            return render(request, 'article/home.html', {'article': all_article})
+            random_article = ArticleModel.objects.order_by("?").first()
+
+            return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article})
         else:
             return redirect('/sign-in')
     elif request.method == 'POST':
