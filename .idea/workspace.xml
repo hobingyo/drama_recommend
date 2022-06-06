@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddc1ea4d-bc49-4686-bf86-3d1a52da0ea9" name="변경" comment="">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/article_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/article_detail.html" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
->>>>>>> 67f7bd0f3616c3e5b2d59683d31b103a917cf759
-=======
-      <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
->>>>>>> 67f7bd0f3616c3e5b2d59683d31b103a917cf759
-=======
-      <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
->>>>>>> 67f7bd0f3616c3e5b2d59683d31b103a917cf759
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +33,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Django 서버.Unnamed">
+  <component name="RunManager" selected="Django Server.Unnamed">
     <configuration name="Test: DramaRecommend" type="DjangoTestsConfigurationType" temporary="true">
       <module name="DramaRecommend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,9 +103,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django 서버.Unnamed" />
-      <item itemvalue="Django 서버.Unnamed (1)" />
-      <item itemvalue="Django 테스트.Test: DramaRecommend" />
+      <item itemvalue="Django Server.Unnamed" />
+      <item itemvalue="Django Server.Unnamed (1)" />
+      <item itemvalue="Django tests.Test: DramaRecommend" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
