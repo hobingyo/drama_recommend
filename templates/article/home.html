@@ -51,11 +51,8 @@
         }
 
         .modal-post {
-            background-color: black;
             color: ivory;
-            border: solid 1px red;
-            width: 100px;
-            height: 40px;
+            cursor: pointer;
         }
 
         .random {
@@ -71,6 +68,10 @@
         .card-body {
             width: 200px;
 
+        }
+        button {
+           background-color: black;
+            color: ivory;
         }
     </style>
 
@@ -88,6 +89,11 @@
     </div>
     <div class="menu ">
         <a href="/logout" style="word-spacing:50px; color: white; display: block "> 로그아웃 </a>
+    </div>
+    <div class="menu">
+        <a class="modal-post" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                data-bs-whatever="@fat" style="color: white; display: block">게시물작성
+        </a>
     </div>
     <input class="form-control me-2 menu"
            style="width: 265px; height: 35px; margin-left: 300px;margin-bottom: 10px  "
@@ -118,9 +124,7 @@
 <div id="upload">
     <form class="form-area" method="post" action="/article/">
         {% csrf_token %}
-        <button type="button" class="modal-post" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                data-bs-whatever="@fat">게시물 작성
-        </button>
+
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
