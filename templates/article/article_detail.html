@@ -83,13 +83,6 @@
         margin-left: 100px;
     }
 
-    .comment {
-        width: 800px;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-    }
-
     .zzim {
         margin-top: 750px;
         margin-right: 50px;
@@ -99,6 +92,17 @@
         width: 80px;
         height: 30px;
         background-color: crimson;
+    }
+
+    .comment-box {
+        width: 800px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .media-body {
+        margin-bottom: 20px;
     }
 </style>
 <body>
@@ -140,35 +144,19 @@
         </div>
         <div class="zzim">
             {% if like %}
-                <button><a href="/article/like/{{ article.id }}" class="card-link" style="color: ivory;">[찜 취소]</a>
+                <button><a href="/article/like/{{ article.id }}" class="card-link"
+                           style="color: ivory; text-decoration-color: transparent;">[찜 취소]</a>
                 </button>
             {% else %}
-                <button><a href="/article/like/{{ article.id }}" class="card-link" style="color: ivory;">[찜]</a>
+                <button><a href="/article/like/{{ article.id }}" class="card-link"
+                           style="color: ivory; text-decoration-color: transparent;">[찜]</a>
                 </button>
             {% endif %}
         </div>
     </div>
-    <div class="comment">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <div class="comment-input input-group mb-3" action="/article/comment/{{ article.id }}" method="post">
-            {% csrf_token %}
-            <input type="text" class="form-control" id='comment' name='comment' placeholder="댓글을 작성 해 주세요"/>
-            <select name="rating" id="rating">
-                <option value="1">★</option>
-                <option value="2">★★</option>
-                <option value="3">★★★</option>
-                <option value="4">★★★★</option>
-                <option value="5">★★★★★</option>
-            </select>
-            <button class="btn btn-outline-secondary" type="submit">작성</button>
-        </div>
-        <div class="comment-list">
-=======
-=======
->>>>>>> 67f7bd0f3616c3e5b2d59683d31b103a917cf759
-        <div class="input-group mb-3">
-            <form action="/article/comment/{{ article.id }}" method="post">
+    <div class="comment-box">
+        <div class="comment">
+            <form class="comment-input input-group mb-3" action="/article/comment/{{ article.id }}" method="post">
                 {% csrf_token %}
                 <input type="text" class="form-control" id='comment' name='comment' placeholder="댓글을 작성 해 주세요"/>
                 <select name="rating" id="rating">
@@ -180,11 +168,8 @@
                 </select>
                 <button class="btn btn-outline-secondary" type="submit">작성</button>
             </form>
-
-<<<<<<< HEAD
->>>>>>> 67f7bd0f3616c3e5b2d59683d31b103a917cf759
-=======
->>>>>>> 67f7bd0f3616c3e5b2d59683d31b103a917cf759
+        </div>
+        <div class="comment-list">
             {% for cm in comment %}
                 <div class="row">
                     <div class="col-md-12">
@@ -211,6 +196,7 @@
             {% endfor %}
         </div>
     </div>
+</div>
 </div>
 </form>
 </body>
