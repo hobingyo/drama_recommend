@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import ArticleModel, ArticleComment
+from .models import ArticleModel, ArticleComment, UserLike
 from django.contrib.auth.decorators import login_required
 
 
@@ -41,7 +41,8 @@ def article(request):
 def detail_article(request, id):
     my_article = ArticleModel.objects.get(id=id)
     article_comment = ArticleComment.objects.filter(tweet_id=id).order_by('-created_at')
-    return render(request, 'article/article_detail.html', {'article': my_article, 'comment': article_comment})
+    my_like = UserLike.objects.filter(user_id=request.user.id, article_id=id)
+    return render(request, 'article/article_detail.html', {'article': my_article, 'comment': article_comment, 'like': my_like})
 
 @login_required
 def write_comment(request, id):
@@ -56,3 +57,26 @@ def write_comment(request, id):
         my_comment.tweet = current_tweet
         my_comment.save()
         return redirect('/article/'+str(id))
+
+@login_required
+def like(request, id):
+    me = request.user
+    article = ArticleModel.objects.get(id=id)
+    my_like = UserLike.objects.filter(user_id=me.id, article_id=id)
+    if my_like:
+        my_like.delete()
+    else:
+        my_like = UserLike()
+        my_like.article_id = article.id
+        my_like.user_id = me.id
+        my_like.save()
+
+    return redirect('/article/'+str(id))
+
+def like_listing(request):
+    me = request.user
+    likes = UserLike.objects.filter(user_id=me.id)
+    article = []
+    for like in likes:
+        article += ArticleModel.objects.filter(id=like.article_id)
+    return render(request, 'article/like.html', {'article': article})
