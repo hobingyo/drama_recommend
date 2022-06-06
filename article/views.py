@@ -79,3 +79,8 @@ def like_listing(request):
     for like in likes:
         article += ArticleModel.objects.filter(id=like.article_id)
     return render(request, 'article/like.html', {'article': article})
+
+def search(request):
+    search = request.POST.get('search','')
+    my_search = ArticleModel.objects.all().filter(title__contains=search)
+    return render(request, 'article/search.html', {'article': my_search})
