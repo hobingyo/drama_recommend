@@ -36,7 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Django 서버.Unnamed">
+  <component name="RunManager" selected="Django Server.Unnamed">
     <configuration name="Test: DramaRecommend" type="DjangoTestsConfigurationType" temporary="true">
       <module name="DramaRecommend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,9 +106,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django 서버.Unnamed" />
-      <item itemvalue="Django 서버.Unnamed (1)" />
-      <item itemvalue="Django 테스트.Test: DramaRecommend" />
+      <item itemvalue="Django Server.Unnamed" />
+      <item itemvalue="Django Server.Unnamed (1)" />
+      <item itemvalue="Django tests.Test: DramaRecommend" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
