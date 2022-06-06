@@ -42,22 +42,29 @@ def article(request):
 @login_required
 def detail_article(request, id):
     my_article = ArticleModel.objects.get(id=id)
-    article_comment = ArticleComment.objects.filter(tweet_id=id).order_by('-created_at')
+    article_comment = ArticleComment.objects.filter(article_id=id).order_by('-created_at')
     my_like = UserLike.objects.filter(user_id=request.user.id, article_id=id)
     return render(request, 'article/article_detail.html', {'article': my_article, 'comment': article_comment, 'like': my_like})
 
 @login_required
 def write_comment(request, id):
     if request.method == 'POST':
-        current_tweet = ArticleModel.objects.get(id=id)
+        current_article = ArticleModel.objects.get(id=id)
         user = request.user
         my_comment = ArticleComment()
         my_comment.author = user
         my_comment.comment = request.POST.get('comment', '')
         my_comment.rating = int(request.POST.get('rating', ''))
-        my_comment.tweet = current_tweet
+        my_comment.article = current_article
         my_comment.save()
         return redirect('/article/'+str(id))
+
+@login_required
+def delete_comment(request, id):
+    my_comment = ArticleComment.objects.get(id=id)
+    current_article = my_comment.article_id
+    my_comment.delete()
+    return redirect('/article/'+str(current_article))
 
 @login_required
 def like(request, id):

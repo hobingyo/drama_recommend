@@ -200,6 +200,13 @@
                                 <span> {{ cm.author }} </span>
                                 <span> - {{ cm.created_at | timesince }} 전</span>
                             </div>
+                            {% if cm.author == user %}
+                                <div style="float: right">
+                                    <a href="/article/comment/delete/{{ cm.id }}">
+                                        <span class="badge bg-danger">삭제</span>
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
