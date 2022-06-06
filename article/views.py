@@ -49,7 +49,6 @@ def write_comment(request, id):
     if request.method == 'POST':
         current_tweet = ArticleModel.objects.get(id=id)
         user = request.user
-        print("fsdfsdfsd")
         my_comment = ArticleComment()
         my_comment.author = user
         my_comment.comment = request.POST.get('comment', '')
