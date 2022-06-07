@@ -24,7 +24,7 @@
           style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 백우진 -> 메인 git, backend(user)
 -   <a href="https://github.com/attabooi"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
-          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 최준헌 -> backend(post)
+          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 최준헌 -> 추천시스템 모델 제작, backend(post)
 
 ### 적용
 
