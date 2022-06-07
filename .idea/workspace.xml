@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ddc1ea4d-bc49-4686-bf86-3d1a52da0ea9" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
+    <list default="true" id="9a3e0bcf-a679-4bb9-b617-8e1e2ff3906c" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/85860bf6-1438-4b78-8b7a-e118b7e11df3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/article_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/article_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/like.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/like.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,8 +41,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Django Server.Unnamed">
+  <component name="RunManager" selected="Django 서버.이름이 지정되지 않았습니다">
     <configuration name="Test: DramaRecommend" type="DjangoTestsConfigurationType" temporary="true">
       <module name="DramaRecommend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -52,6 +62,30 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="이름이 지정되지 않았습니다" type="Python.DjangoServer" factoryName="Django server" nameIsGenerated="true">
+      <module name="DramaRecommend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="DramaRecommend.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\82107\OneDrive\문서\drama_recommend\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
     <configuration name="Unnamed (1)" type="Python.DjangoServer" factoryName="Django server" nameIsGenerated="true">
@@ -103,20 +137,22 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django Server.Unnamed" />
-      <item itemvalue="Django Server.Unnamed (1)" />
-      <item itemvalue="Django tests.Test: DramaRecommend" />
+      <item itemvalue="Django 서버.이름이 지정되지 않았습니다" />
+      <item itemvalue="Django 서버.Unnamed" />
+      <item itemvalue="Django 서버.Unnamed (1)" />
+      <item itemvalue="Django 테스트.Test: DramaRecommend" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a09c4e98-8395-49e5-b3b2-da11dfffd4a7" name="Changes" comment="" />
+      <changelist id="9a3e0bcf-a679-4bb9-b617-8e1e2ff3906c" name="변경" comment="" />
       <created>1654316116290</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654316116290</updated>
       <workItem from="1654316118452" duration="5582000" />
+      <workItem from="1654559654106" duration="1044000" />
     </task>
     <servers />
   </component>
