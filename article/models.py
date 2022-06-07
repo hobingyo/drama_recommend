@@ -13,7 +13,7 @@ class ArticleModel(models.Model):
     genre = models.CharField(max_length=256)
     tags = models.CharField(max_length=256)
     cast = models.CharField(max_length=256)
-    rating = models.IntegerField()
+    rating = models.FloatField()
     aired_date = models.DateTimeField()
     episode = models.IntegerField()
     aged = models.IntegerField()

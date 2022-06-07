@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a3e0bcf-a679-4bb9-b617-8e1e2ff3906c" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/article_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/article_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,7 @@
       <recent name="C:\Users\82107\OneDrive\문서\drama_recommend\static\video" />
     </key>
   </component>
-  <component name="RunManager" selected="Django 서버.Unnamed">
+  <component name="RunManager" selected="Django Server.Unnamed">
     <configuration name="Test: DramaRecommend" type="DjangoTestsConfigurationType" temporary="true">
       <module name="DramaRecommend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,9 +109,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django 서버.Unnamed" />
-      <item itemvalue="Django 서버.Unnamed (1)" />
-      <item itemvalue="Django 테스트.Test: DramaRecommend" />
+      <item itemvalue="Django Server.Unnamed" />
+      <item itemvalue="Django Server.Unnamed (1)" />
+      <item itemvalue="Django tests.Test: DramaRecommend" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

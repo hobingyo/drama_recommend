@@ -156,17 +156,27 @@
         </div>
         <div class="else">
             <p>제목 : {{ article.title }}</p>
-            <p>연령 : {{ article.aged }}</p>
-            <p>방영일 : {{ article.aired_date }}</p>
-            <p>게시물 작성자 : {{ article.author }}</p>
+            <p>연령 : {{ article.aged }}세 미만 시청 불가</p>
+            <p>방영일 : {{ article.aired_date|date:"Y-m-d" }}</p>
             <p>등장인물 : {{ article.cast }}</p>
-            <p>게시물 작성 시간 : {{ article.created_at }}</p>
             <p>에피소드 수 : {{ article.episode }}</p>
             <p>장르 : {{ article.genre }}</p>
-            <p>별점 : {{ article.rating }}</p>
+            {% if article.rating >= 0 and article.rating < 1 %}
+                <p>별점 : ☆☆☆☆☆ {{ article.rating }} </p>
+            {% elif article.rating >= 1 and article.rating < 2 %}
+                <p>별점 : ★☆☆☆☆ {{ article.rating }} </p>
+            {% elif article.rating >= 2 and article.rating < 3 %}
+                <p>별점 : ★★☆☆☆ {{ article.rating }} </p>
+            {% elif article.rating >= 3 and article.rating < 4 %}
+                <p>별점 : ★★★☆☆ {{ article.rating }} </p>
+            {% elif article.rating >= 4 and article.rating < 5 %}
+                <p>별점 : ★★★★☆ {{ article.rating }} </p>
+            {% elif article.rating == 5 %}
+                <p>별점 : ★★★★★ {{ article.rating }} </p>
+            {% endif %}
             <p>줄거리 : {{ article.synopsis }}</p>
             <p>태그 : {{ article.tags }}</p>
-            <p>수정 시간 : {{ article.updated_at }}</p>
+
         </div>
         <div class="zzim">
             {% if like %}
