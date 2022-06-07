@@ -32,7 +32,6 @@
         }
 
         .header {
-
             width: 100%;
             position: fixed;
             display: flex;
@@ -73,6 +72,18 @@
             background-color: black;
             color: ivory;
         }
+
+        .search {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .search-btn {
+            margin-top: 25px;
+            height: 40px;
+        }
+
+
     </style>
 
 
@@ -95,16 +106,15 @@
            data-bs-whatever="@fat" style="color: white; display: block">게시물작성
         </a>
     </div>
-    <div>
-        <form action="/search/" method="post">
+    <form action="/search/" method="post">
+        <div class="search ">
             {% csrf_token %}
             <input class="form-control me-2 menu"
-                   style="width: 265px; height: 35px; margin-left: 300px;margin-bottom: 10px  "
+                   style="width: 265px; height: 35px; margin-left: 300px;"
                    type="search" placeholder="검색" aria-label="Search" name="search" id="search">
-            <button>검색</button>
-        </form>
-    </div>
-
+            <button class="search-btn">검색</button>
+        </div>
+    </form>
 </div>
 <div class="random">
     <a href="/article/{{ random_article.id }}" style="text-decoration-line : none; color: black;">

@@ -108,6 +108,16 @@
     .media-body {
         margin-bottom: 20px;
     }
+
+    .search {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .search-btn {
+        margin-top: 25px;
+        height: 40px;
+    }
 </style>
 <body>
 <div class="header">
@@ -123,15 +133,21 @@
     <div class="menu ">
         <a href="/logout" style="word-spacing:50px; color: white; display: block "> 로그아웃 </a>
     </div>
-    <div>
-        <form action="/search/" method="post">
+    <div class="menu">
+        <a class="modal-post" data-bs-toggle="modal" data-bs-target="#exampleModal"
+           data-bs-whatever="@fat" style="color: white; display: block">게시물작성
+        </a>
+    </div>
+    <form action="/search/" method="post">
+        <div class="search ">
             {% csrf_token %}
             <input class="form-control me-2 menu"
-                   style="width: 265px; height: 35px; margin-left: 300px;margin-bottom: 10px  "
+                   style="width: 265px; height: 35px; margin-left: 300px;"
                    type="search" placeholder="검색" aria-label="Search" name="search" id="search">
-            <button>검색</button>
-        </form>
-    </div>
+            <button class="search-btn">검색</button>
+        </div>
+    </form>
+
 </div>
 <div class="wrap">
     <div class="detail">

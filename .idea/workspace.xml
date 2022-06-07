@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a3e0bcf-a679-4bb9-b617-8e1e2ff3906c" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/article/migrations/0008_rename_tweet_articlecomment_article.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/article/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DramaRecommend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DramaRecommend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/article_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/article_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/like.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/like.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
