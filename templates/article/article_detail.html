@@ -47,6 +47,10 @@
         margin-left: 50px;
     }
 
+    .menu > a {
+        text-decoration: none;
+    }
+
     .detail {
         display: flex;
         flex-direction: row;
@@ -107,9 +111,9 @@
 </style>
 <body>
 <div class="header">
-    <div class="navbar">
+    <a href="/" class="navbar">
         <img src='../../static/img/logo.png'>
-    </div>
+    </a>
     <div class="menu">
         <a href="/" style="word-spacing:50px; color: white"> 홈 </a>
     </div>
@@ -119,9 +123,15 @@
     <div class="menu ">
         <a href="/logout" style="word-spacing:50px; color: white; display: block "> 로그아웃 </a>
     </div>
-    <input class="form-control me-2 menu"
-           style="width: 265px; height: 35px; margin-left: 300px;margin-bottom: 10px  "
-           type="search" placeholder="검색" aria-label="Search">
+    <div>
+        <form action="/search/" method="post">
+            {% csrf_token %}
+            <input class="form-control me-2 menu"
+                   style="width: 265px; height: 35px; margin-left: 300px;margin-bottom: 10px  "
+                   type="search" placeholder="검색" aria-label="Search" name="search" id="search">
+            <button>검색</button>
+        </form>
+    </div>
 </div>
 <div class="wrap">
     <div class="detail">
@@ -190,6 +200,13 @@
                                 <span> {{ cm.author }} </span>
                                 <span> - {{ cm.created_at | timesince }} 전</span>
                             </div>
+                            {% if cm.author == user %}
+                                <div style="float: right">
+                                    <a href="/article/comment/delete/{{ cm.id }}">
+                                        <span class="badge bg-danger">삭제</span>
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ class ArticleModel(models.Model):
 class ArticleComment(models.Model):
     class Meta:
         db_table = "comment"
-    tweet = models.ForeignKey(ArticleModel, on_delete=models.CASCADE)
+    article = models.ForeignKey(ArticleModel, on_delete=models.CASCADE)
     author = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     comment = models.CharField(max_length=256)
     rating = models.IntegerField()
