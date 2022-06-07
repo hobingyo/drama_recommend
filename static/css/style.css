@@ -5,7 +5,6 @@
 }
 
 
-
 .navbar > img {
     margin-left: 60px;
     width: 180px;
@@ -13,7 +12,15 @@
 }
 
 body {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://assets.nflxext.com/ffe/siteui/vlv3/5ea364b1-8e59-4693-8ad8-f0eaee32d1bf/fdbda4bf-7038-4889-9e5e-01ef45114e55/KR-ko-20220530-popsignuptwoweeks-perspective_alpha_website_small.jpg');
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/sign-in_BG.jpg");
+    animation-name: move_repeat;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+}
+@keyframes move_repeat {
+    0% {background-position: left;}
+    50% {background-position: right;}
+    100% {background-position: left;}
 }
 
 .login-body {
@@ -65,5 +72,5 @@ body {
     text-align: left;
     margin: auto;
     padding-top: 20px;
-    color: gray;
+    color: #000000;
 }
