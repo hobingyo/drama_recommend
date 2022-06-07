@@ -27,7 +27,7 @@ def article(request):
     elif request.method == 'POST':
         user = request.user
         title = request.POST.get('title', '')
-        poster = request.POST.get('poster', '')
+        poster = request.FILES.get('poster', '')
         synopsis = request.POST.get('synopsis', '')
         genre = request.POST.get('genre', '')
         cast = request.POST.get('cast', '')

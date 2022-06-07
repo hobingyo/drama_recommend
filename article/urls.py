@@ -1,5 +1,9 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 
 urlpatterns = [
     path('', views.home, name='home'), # 메인
@@ -12,4 +16,4 @@ urlpatterns = [
     path('search/', views.search, name='search'), # 검색 페이지 리스팅
     path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
     path('tag/<str:tag>/', views.TaggedObjectLV.as_view(), name='tagged_object_list'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
