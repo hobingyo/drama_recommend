@@ -189,7 +189,11 @@
                             </div>
                             <div class="form-group mt-2 mb-2">
                                 <label for="password">연령제한 (15 or 19)</label>
-                                <input type="number" class="form-control" id="aged" name="aged">
+                                <select class="form-control" id="aged" name="aged" required>
+                                    <option value="15">15세미만 관람불가</option>
+                                    <option value="19">19세미만 관람불가</option>
+                                    <option value="" disabled selected>연령제한을 선택해 주세요.</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
