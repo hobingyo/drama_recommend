@@ -9,6 +9,10 @@
       <change beforePath="$PROJECT_DIR$/templates/article/like.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/like.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/search.html" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/templates/taggit/tag_with_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/taggit/tag_with_post.html" afterDir="false" />
+>>>>>>> c52f565f716a342a65f189077a8f63f0bdd10d5d
 =======
       <change beforePath="$PROJECT_DIR$/templates/taggit/tag_with_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/taggit/tag_with_post.html" afterDir="false" />
 >>>>>>> c52f565f716a342a65f189077a8f63f0bdd10d5d
