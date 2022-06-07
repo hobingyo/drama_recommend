@@ -3,8 +3,7 @@ from .models import ArticleModel, ArticleComment, UserLike
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
-
+# 메인
 def home(request):
     user = request.user.is_authenticated
     if user:
@@ -12,7 +11,7 @@ def home(request):
     else:
         return redirect('/sign-in')
 
-
+# GET : 게시물 리스팅 / POST : 게시물 등록
 def article(request):
     if request.method == 'GET':
         user = request.user.is_authenticated
@@ -33,19 +32,24 @@ def article(request):
         aired_date = request.POST.get('aired_date', '')
         episode = request.POST.get('episode', '')
         aged = request.POST.get('aged', '')
+        tags = request.POST.get('tags', '')
 
-        my_article = ArticleModel.objects.create(author=user,poster=poster, title=title, synopsis=synopsis, genre=genre,
-                                                 cast=cast, aired_date=aired_date, episode=episode, aged=aged, rating = 0)
+        my_article = ArticleModel.objects.create(author=user, poster=poster, title=title, synopsis=synopsis,
+                                                 genre=genre, tags=tags,
+                                                 cast=cast, aired_date=aired_date, episode=episode, aged=aged, rating=0)
         my_article.save()
         return redirect('/article')
 
+# 게시물 상세페이지
 @login_required
 def detail_article(request, id):
     my_article = ArticleModel.objects.get(id=id)
     article_comment = ArticleComment.objects.filter(article_id=id).order_by('-created_at')
     my_like = UserLike.objects.filter(user_id=request.user.id, article_id=id)
-    return render(request, 'article/article_detail.html', {'article': my_article, 'comment': article_comment, 'like': my_like})
+    return render(request, 'article/article_detail.html',
+                  {'article': my_article, 'comment': article_comment, 'like': my_like})
 
+# 댓글 등록
 @login_required
 def write_comment(request, id):
     if request.method == 'POST':
@@ -58,16 +62,19 @@ def write_comment(request, id):
         my_comment.article = current_article
         my_comment.save()
 
-
         comment_rating = ArticleComment.objects.filter(article_id=id)
         rate = 0
-        for rating in comment_rating:
-            rate=rate+rating.rating
-        current_article.rating=rate/len(comment_rating)
+        if comment_rating:
+            for rating in comment_rating:
+                rate = rate + rating.rating
+            current_article.rating = round(rate / len(comment_rating), 1)
+        else:
+            current_article.rating = rate
         current_article.save()
 
-        return redirect('/article/'+str(id))
+        return redirect('/article/' + str(id))
 
+# 댓글 삭제
 @login_required
 def delete_comment(request, id):
     my_comment = ArticleComment.objects.get(id=id)
@@ -76,12 +83,17 @@ def delete_comment(request, id):
     current_article = ArticleModel.objects.get(id=my_comment.article_id)
     comment_rating = ArticleComment.objects.filter(article_id=my_comment.article_id)
     rate = 0
-    for rating in comment_rating:
-        rate = rate + rating.rating
-    current_article.rating = rate / len(comment_rating)
-    current_article.save()
-    return redirect('/article/'+str(my_comment.article_id))
 
+    if comment_rating:
+        for rating in comment_rating:
+            rate = rate + rating.rating
+        current_article.rating = round(rate / len(comment_rating), 1)
+    else:
+        current_article.rating = rate
+    current_article.save()
+    return redirect('/article/' + str(my_comment.article_id))
+
+# 찜하기
 @login_required
 def like(request, id):
     me = request.user
@@ -95,8 +107,9 @@ def like(request, id):
         my_like.user_id = me.id
         my_like.save()
 
-    return redirect('/article/'+str(id))
+    return redirect('/article/' + str(id))
 
+# 찜한 페이지 리스팅
 def like_listing(request):
     me = request.user
     likes = UserLike.objects.filter(user_id=me.id)
@@ -105,7 +118,8 @@ def like_listing(request):
         article += ArticleModel.objects.filter(id=like.article_id)
     return render(request, 'article/like.html', {'article': article})
 
+# 검색 페이지 리스팅
 def search(request):
-    search = request.POST.get('search','')
+    search = request.POST.get('search', '')
     my_search = ArticleModel.objects.all().filter(title__contains=search)
     return render(request, 'article/search.html', {'article': my_search})
