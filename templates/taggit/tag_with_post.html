@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +29,46 @@
     </div>
 </div>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <h3 class="mt-2">Posts for tag - {{ tagname }}</h3>
+    <hr>
+    <div class="card">
+        <div class="card-body">
+            {% for article in object_list %}
+                <div class="articles" id="article">
+                    <div class=" row row-cols-1 row-cols-md-4 g-4">
+
+                        <div class="col">
+                            <div class="card h-100">
+                                <a href="/article/{{ article.id }}" style="text-decoration-line : none; color: black;">
+                                    <img src="{{ article.poster }}" class="card-img-top" style="height: 450px">
+                                </a>
+                                <div class="card-body">
+                                    <a href="/article/{{ article.id }}"
+                                       style="text-decoration-line : none; color: black;">
+                                        <h5 class="card-title">{{ article.title }}</h5>
+                                    </a>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+>>>>>>> c52f565f716a342a65f189077a8f63f0bdd10d5d
 =======
 <!DOCTYPE html>
 <html lang="en">
