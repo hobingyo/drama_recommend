@@ -57,14 +57,30 @@ def write_comment(request, id):
         my_comment.rating = int(request.POST.get('rating', ''))
         my_comment.article = current_article
         my_comment.save()
+
+
+        comment_rating = ArticleComment.objects.filter(article_id=id)
+        rate = 0
+        for rating in comment_rating:
+            rate=rate+rating.rating
+        current_article.rating=rate/len(comment_rating)
+        current_article.save()
+
         return redirect('/article/'+str(id))
 
 @login_required
 def delete_comment(request, id):
     my_comment = ArticleComment.objects.get(id=id)
-    current_article = my_comment.article_id
     my_comment.delete()
-    return redirect('/article/'+str(current_article))
+
+    current_article = ArticleModel.objects.get(id=my_comment.article_id)
+    comment_rating = ArticleComment.objects.filter(article_id=my_comment.article_id)
+    rate = 0
+    for rating in comment_rating:
+        rate = rate + rating.rating
+    current_article.rating = rate / len(comment_rating)
+    current_article.save()
+    return redirect('/article/'+str(my_comment.article_id))
 
 @login_required
 def like(request, id):
