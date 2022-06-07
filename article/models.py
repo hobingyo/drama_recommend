@@ -1,5 +1,7 @@
 from django.db import models
 from user.models import UserModel
+from taggit.managers import TaggableManager
+
 # Create your models here.
 
 class ArticleModel(models.Model):
@@ -11,7 +13,7 @@ class ArticleModel(models.Model):
     poster = models.CharField(max_length=256, default='')
     synopsis = models.CharField(max_length=256)
     genre = models.CharField(max_length=256)
-    tags = models.CharField(max_length=256)
+    tags = TaggableManager(blank=True)
     cast = models.CharField(max_length=256)
     rating = models.FloatField()
     aired_date = models.DateTimeField()
@@ -21,15 +23,18 @@ class ArticleModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
 class ArticleComment(models.Model):
     class Meta:
         db_table = "comment"
+
     article = models.ForeignKey(ArticleModel, on_delete=models.CASCADE)
     author = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     comment = models.CharField(max_length=256)
     rating = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
 class UserLike(models.Model):
     class Meta:

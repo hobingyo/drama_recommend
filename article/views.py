@@ -1,3 +1,4 @@
+from django.views.generic import ListView, TemplateView
 from django.shortcuts import render, redirect
 from .models import ArticleModel, ArticleComment, UserLike
 from django.contrib.auth.decorators import login_required
@@ -10,6 +11,7 @@ def home(request):
         return redirect('/article')
     else:
         return redirect('/sign-in')
+
 
 # GET : 게시물 리스팅 / POST : 게시물 등록
 def article(request):
@@ -32,13 +34,18 @@ def article(request):
         aired_date = request.POST.get('aired_date', '')
         episode = request.POST.get('episode', '')
         aged = request.POST.get('aged', '')
-        tags = request.POST.get('tags', '')
+        tags = request.POST.get('tags', '').split(',')
 
         my_article = ArticleModel.objects.create(author=user, poster=poster, title=title, synopsis=synopsis,
-                                                 genre=genre, tags=tags,
+                                                 genre=genre,
                                                  cast=cast, aired_date=aired_date, episode=episode, aged=aged, rating=0)
+        for tag in tags:
+            tag = tag.strip()
+            if tag != '':  # 태그를 작성하지 않았을 경우에 저장하지 않기 위해서
+                my_article.tags.add(tag)
         my_article.save()
         return redirect('/article')
+
 
 # 게시물 상세페이지
 @login_required
@@ -48,6 +55,7 @@ def detail_article(request, id):
     my_like = UserLike.objects.filter(user_id=request.user.id, article_id=id)
     return render(request, 'article/article_detail.html',
                   {'article': my_article, 'comment': article_comment, 'like': my_like})
+
 
 # 댓글 등록
 @login_required
@@ -74,6 +82,7 @@ def write_comment(request, id):
 
         return redirect('/article/' + str(id))
 
+
 # 댓글 삭제
 @login_required
 def delete_comment(request, id):
@@ -93,6 +102,7 @@ def delete_comment(request, id):
     current_article.save()
     return redirect('/article/' + str(my_comment.article_id))
 
+
 # 찜하기
 @login_required
 def like(request, id):
@@ -109,6 +119,7 @@ def like(request, id):
 
     return redirect('/article/' + str(id))
 
+
 # 찜한 페이지 리스팅
 def like_listing(request):
     me = request.user
@@ -118,8 +129,27 @@ def like_listing(request):
         article += ArticleModel.objects.filter(id=like.article_id)
     return render(request, 'article/like.html', {'article': article})
 
+
 # 검색 페이지 리스팅
 def search(request):
     search = request.POST.get('search', '')
     my_search = ArticleModel.objects.all().filter(title__contains=search)
     return render(request, 'article/search.html', {'article': my_search})
+
+
+# 태그
+class TagCloudTV(TemplateView):
+    template_name = 'taggit/tag_cloud_view.html'
+
+
+class TaggedObjectLV(ListView):
+    template_name = 'taggit/tag_with_post.html'
+    model = ArticleModel
+
+    def get_queryset(self):
+        return ArticleModel.objects.filter(tags__name=self.kwargs.get('tag'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tagname'] = self.kwargs['tag']
+        return context
