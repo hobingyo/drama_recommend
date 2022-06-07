@@ -10,4 +10,6 @@ urlpatterns = [
     path('article/like/<int:id>', views.like, name='like'), # 찜하기
     path('like/', views.like_listing, name='like_listing'), # 찜한 페이지 리스팅
     path('search/', views.search, name='search'), # 검색 페이지 리스팅
+    path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
+    path('tag/<str:tag>/', views.TaggedObjectLV.as_view(), name='tagged_object_list'),
 ]
