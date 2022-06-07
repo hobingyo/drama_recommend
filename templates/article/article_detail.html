@@ -157,6 +157,10 @@
            data-bs-whatever="@fat" style="color: white; display: block">게시물작성
         </a>
     </div>
+    <div class="menu">
+        <a style="word-spacing:50px; color: white; display: block "
+           href="{% url 'tag_cloud' %}">태그</a>
+    </div>
     <form action="/search/" method="post">
         <div class="search ">
             {% csrf_token %}
@@ -204,8 +208,6 @@
                                                     </span>
                     </a>
                 {% endfor %}
-                -<a style="text-decoration: none"
-                    href="{% url 'tag_cloud' %}">TagCloud</a>
             {% endif %}
 
         </div>
