@@ -16,7 +16,9 @@ body {
     animation-name: move_repeat;
     animation-duration: 60s;
     animation-iteration-count: infinite;
+    background-repeat: no-repeat;
 }
+
 @keyframes move_repeat {
     0% {background-position: left;}
     50% {background-position: right;}
