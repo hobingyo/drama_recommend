@@ -132,6 +132,7 @@
         height: 40px;
         background-color: red;
         color: ivory;
+        width: 50px;
     }
 
     .comment-list {
@@ -141,26 +142,26 @@
 <body>
 <div class="header">
     <a href="/" class="navbar">
-        <img onclick="location.href='/'" src='../../static/img/logo.png'>
+        <img src=../static/img/logo.png>
     </a>
-    <div class="menu">
-        <a href="/" style="word-spacing:50px; color: white"> 홈 </a>
-    </div>
-    <div class="menu">
-        <a href="/like" style="word-spacing:50px; color:white "> 내가찜한콘텐츠 </a>
-    </div>
-    <div class="menu ">
-        <a href="/logout" style="word-spacing:50px; color: white; display: block "> 로그아웃 </a>
-    </div>
-    <div class="menu">
+    <p class="menu menu-none">
+        <a  href="/" style="color: white; width: 30px"> 홈 </a>
+    </p>
+    <p class="menu menu-none">
+        <a href="/like" style=" color:white;width: 120px; display: block "> 내가찜한콘텐츠 </a>
+    </p>
+    <p class="menu menu-live">
+        <a href="/logout" style=" color: white; width: 70px; display: block"> 로그아웃 </a>
+    </p>
+    <p class="menu menu-live">
         <a class="modal-post" data-bs-toggle="modal" data-bs-target="#exampleModal"
-           data-bs-whatever="@fat" style="color: white; display: block">게시물작성
+           data-bs-whatever="@fat" style="color: white;  width: 80px; display: block">게시물작성
         </a>
-    </div>
-    <div class="menu">
-        <a style="word-spacing:50px; color: white; display: block "
+    </p>
+    <p class="menu menu-none">
+        <a style="word-spacing:50px; color: white; display: block; width: 40px; display: block"
            href="{% url 'tag_cloud' %}">태그</a>
-    </div>
+    </p>
     <form action="/search/" method="post">
         <div class="search ">
             {% csrf_token %}
@@ -170,7 +171,6 @@
             <button class="search-btn">검색</button>
         </div>
     </form>
-
 </div>
 <div class="wrap">
     <div class="detail">
