@@ -20,12 +20,53 @@
             crossorigin="anonymous"></script>
 </head>
 <style>
-    @media (max-width: 1600px) {
+    @media (max-width: 1400px) {
         .menu-none {
             display: none;
         }
 
     }
+
+    @media (max-width: 763px) {
+        .menu-live {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1595px) {
+
+        .detail {
+            max-width: 100%;
+            width: auto !important;
+            height: auto;
+        }
+
+        .wrap {
+            max-width: 100%;
+            width: auto !important;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 1278px) {
+        .else {
+            display: none;
+        }
+
+    }
+
+    @media (max-width: 970px) {
+        .zzim {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1249px) {
+        .detail {
+            margin-left: 0px;
+        }
+    }
+
 
     .navbar > img {
         margin-left: 30px;
@@ -73,7 +114,7 @@
     .detail {
         display: flex;
         flex-direction: row;
-        margin: auto;
+        margin-left: 200px;
     }
 
     .wrap {
@@ -95,7 +136,6 @@
     .poster > img {
         width: 700px;
         height: 700px;
-        margin-left: 100px;
     }
 
     .else {
@@ -105,6 +145,10 @@
         font-size: 20px;
         margin-left: 100px;
         color: ivory;
+    }
+
+    .else > p {
+        width: 700px;
     }
 
     .zzim {
@@ -135,7 +179,7 @@
     }
 
     .search-btn {
-        margin-top: 25px;
+        margin-top: 26px;
         height: 40px;
         background-color: red;
         color: ivory;
@@ -144,6 +188,10 @@
 
     .comment-list {
         color: ivory;
+    }
+
+    .red-box {
+        margin: auto;
     }
 </style>
 <body>
@@ -173,61 +221,62 @@
         <div class="search">
             {% csrf_token %}
             <input class="form-control me-2 menu"
-                   style="width: 265px; height: 35px; margin-left: 300px;"
+                   style="width: 265px; height: 35px;"
                    type="search" placeholder="검색" aria-label="Search" name="search" id="search">
             <button class="search-btn">검색</button>
         </div>
     </form>
 </div>
 <div class="wrap">
-    <div class="detail">
-        <div class="poster">
-            <img src="../media/{{ article.poster }}">
-        </div>
-        <div class="else">
-            <p>제목 : {{ article.title }}</p>
-            <p>연령 : {{ article.aged }}세 미만 시청 불가</p>
-            <p>방영일 : {{ article.aired_date|date:"Y-m-d" }}</p>
-            <p>등장인물 : {{ article.cast }}</p>
-            <p>에피소드 수 : {{ article.episode }}</p>
-            <p>장르 : {{ article.genre }}</p>
-            {% if article.rating >= 0 and article.rating < 1 %}
-                <p>별점 : ☆☆☆☆☆ {{ article.rating }} </p>
-            {% elif article.rating >= 1 and article.rating < 2 %}
-                <p>별점 : ★☆☆☆☆ {{ article.rating }} </p>
-            {% elif article.rating >= 2 and article.rating < 3 %}
-                <p>별점 : ★★☆☆☆ {{ article.rating }} </p>
-            {% elif article.rating >= 3 and article.rating < 4 %}
-                <p>별점 : ★★★☆☆ {{ article.rating }} </p>
-            {% elif article.rating >= 4 and article.rating < 5 %}
-                <p>별점 : ★★★★☆ {{ article.rating }} </p>
-            {% elif article.rating == 5 %}
-                <p>별점 : ★★★★★ {{ article.rating }} </p>
-            {% endif %}
-            <p>줄거리 : {{ article.synopsis }}</p>
-            <p>태그 : </p>
-            {% if article.tags.all %}
-                {% for tag in article.tags.all %}
-                    <a style="text-decoration: none"
-                       href="{% url 'tagged_object_list' tag.name %}">
+    <div class="red-box">
+        <div class="detail">
+            <div class="poster">
+                <img src="../media/{{ article.poster }}">
+            </div>
+            <div class="else">
+                <p>제목 : {{ article.title }}</p>
+                <p>연령 : {{ article.aged }}세 미만 시청 불가</p>
+                <p>방영일 : {{ article.aired_date|date:"Y-m-d" }}</p>
+                <p>등장인물 : {{ article.cast }}</p>
+                <p>에피소드 수 : {{ article.episode }}</p>
+                <p>장르 : {{ article.genre }}</p>
+                {% if article.rating >= 0 and article.rating < 1 %}
+                    <p>별점 : ☆☆☆☆☆ {{ article.rating }} </p>
+                {% elif article.rating >= 1 and article.rating < 2 %}
+                    <p>별점 : ★☆☆☆☆ {{ article.rating }} </p>
+                {% elif article.rating >= 2 and article.rating < 3 %}
+                    <p>별점 : ★★☆☆☆ {{ article.rating }} </p>
+                {% elif article.rating >= 3 and article.rating < 4 %}
+                    <p>별점 : ★★★☆☆ {{ article.rating }} </p>
+                {% elif article.rating >= 4 and article.rating < 5 %}
+                    <p>별점 : ★★★★☆ {{ article.rating }} </p>
+                {% elif article.rating == 5 %}
+                    <p>별점 : ★★★★★ {{ article.rating }} </p>
+                {% endif %}
+                <p>줄거리 : {{ article.synopsis }}</p>
+                <p>태그 : </p>
+                {% if article.tags.all %}
+                    {% for tag in article.tags.all %}
+                        <a style="text-decoration: none"
+                           href="{% url 'tagged_object_list' tag.name %}">
                                                     <span class="badge rounded-pill bg-success">
                                                         {{ tag.name }}
                                                     </span>
-                    </a>
-                {% endfor %}
-            {% endif %}
-
-        </div>
-        <div class="zzim">
-            {% if like %}
-                <button><a href="/article/like/{{ article.id }}" class="card-link"
-                           style="color: ivory; text-decoration-color: transparent;">[찜 취소]</a>
-                </button>
-            {% else %}
-                <button><a href="/article/like/{{ article.id }}" class="card-link"
-                           style="color: ivory; text-decoration-color: transparent;">[찜]</a>
-                </button>
-            {% endif %}
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="zzim">
+                {% if like %}
+                    <button><a href="/article/like/{{ article.id }}" class="card-link"
+                               style="color: ivory; text-decoration-color: transparent;">[찜 취소]</a>
+                    </button>
+                {% else %}
+                    <button><a href="/article/like/{{ article.id }}" class="card-link"
+                               style="color: ivory; text-decoration-color: transparent;">[찜]</a>
+                    </button>
+                {% endif %}
+            </div>
         </div>
     </div>
     <div class="comment-box">

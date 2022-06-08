@@ -1,9 +1,10 @@
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
     .menu-none {
         display: none;
     }
-
 }
+
+
 
 .navbar {
     background-color: transparent;

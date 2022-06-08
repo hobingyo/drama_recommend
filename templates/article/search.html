@@ -21,11 +21,17 @@
             crossorigin="anonymous"></script>
     <head/>
     <style>
-        @media (max-width: 1600px) {
+        @media (max-width: 1400px) {
             .menu-none {
                 display: none;
             }
 
+        }
+
+        @media (max-width: 763px) {
+            .menu-live {
+                display: none;
+            }
         }
 
         .navbar > img {
@@ -95,7 +101,7 @@
         }
 
         .search-btn {
-            margin-top: 25px;
+            margin-top: 26px;
             height: 40px;
             background-color: red;
             color: ivory;
@@ -131,7 +137,7 @@
         <div class="search">
             {% csrf_token %}
             <input class="form-control me-2 menu"
-                   style="width: 265px; height: 35px; margin-left: 300px;"
+                   style="width: 265px; height: 35px;"
                    type="search" placeholder="검색" aria-label="Search" name="search" id="search">
             <button class="search-btn">검색</button>
         </div>

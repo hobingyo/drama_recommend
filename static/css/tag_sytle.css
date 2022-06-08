@@ -22,11 +22,17 @@ body {
     }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
     .menu-none {
         display: none;
     }
 
+}
+
+@media (max-width: 763px) {
+    .menu-live {
+        display: none;
+    }
 }
 
 .navbar > img {
@@ -86,7 +92,7 @@ button {
 }
 
 .search-btn {
-    margin-top: 25px;
+    margin-top: 26px;
     height: 40px;
     background-color: red;
     color: ivory;
