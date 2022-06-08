@@ -20,6 +20,13 @@
             crossorigin="anonymous"></script>
 </head>
 <style>
+    @media (max-width: 1600px) {
+        .menu-none {
+            display: none;
+        }
+
+    }
+
     .navbar > img {
         margin-left: 30px;
         width: 130px;
@@ -145,7 +152,7 @@
         <img src=../static/img/logo.png>
     </a>
     <p class="menu menu-none">
-        <a  href="/" style="color: white; width: 30px"> 홈 </a>
+        <a href="/" style="color: white; width: 30px"> 홈 </a>
     </p>
     <p class="menu menu-none">
         <a href="/like" style=" color:white;width: 120px; display: block "> 내가찜한콘텐츠 </a>
@@ -162,8 +169,8 @@
         <a style="word-spacing:50px; color: white; display: block; width: 40px; display: block"
            href="{% url 'tag_cloud' %}">태그</a>
     </p>
-    <form action="/search/" method="post">
-        <div class="search ">
+    <form class="search" action="/search/" method="post">
+        <div class="search">
             {% csrf_token %}
             <input class="form-control me-2 menu"
                    style="width: 265px; height: 35px; margin-left: 300px;"
