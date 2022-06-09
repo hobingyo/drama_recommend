@@ -97,6 +97,7 @@ button {
     background-color: red;
     color: ivory;
     width: 50px;
+    border-radius: 5px;
 }
 
 .article {
@@ -173,4 +174,36 @@ button {
 
 .badge {
     margin: 5px;
+}
+
+@media (max-width: 1400px) {
+    .title-text {
+        display: none;
+    }
+
+    .content-synopsis {
+        display: none;
+    }
+
+    .menu-none {
+        display: none;
+    }
+}
+
+@media (max-width: 787px) {
+    .menu-none {
+        display: none;
+    }
+
+    .poster > img {
+        max-width: 100%;
+        width: auto !important;
+        height: auto;
+    }
+}
+
+@media (max-width: 763px) {
+    .menu-live {
+        display: none;
+    }
 }
