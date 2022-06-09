@@ -65,7 +65,7 @@
         {% for tag in tags %}
             <a style="text-decoration: none" href="{% url 'tagged_object_list' tag.name %}">
                         <span class="badge rounded-pill bg-primary">
-                            {{ tag.name }}({{ tag.num_times }})
+                            {{ tag.name }}
                         </span>
             </a>
         {% endfor %}
