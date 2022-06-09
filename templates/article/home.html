@@ -146,6 +146,7 @@
 
 <body>
 <div class="header">
+
     <a href="/" class="navbar">
         <img src=../static/img/logo.png>
     </a>
@@ -185,6 +186,7 @@
                 <br>
                 <p class="content-title">"{{ random_article.title }}"</p>
                 <p class="content-synopsis">{{ random_article.synopsis }}</p>
+                <p class="recomm">{{ request.user }}님을 위한 추천 리스트{{ recommendation_list }}</p>
             </div>
         </div>
         <div class="poster">

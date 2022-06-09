@@ -38,8 +38,3 @@ def content_recommendation(int):
 
     return index, similarity
 
-
-result = content_recommendation(1)
-
-print(result[0])
-

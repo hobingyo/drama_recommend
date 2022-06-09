@@ -2,7 +2,8 @@ from django.views.generic import ListView, TemplateView
 from django.shortcuts import render, redirect
 from .models import ArticleModel, ArticleComment, UserLike
 from django.contrib.auth.decorators import login_required
-
+import pandas as pd
+from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 
 # 메인
 def home(request):
@@ -13,7 +14,7 @@ def home(request):
         return redirect('/sign-in')
 
 
-# GET : 게시물 리스팅 / POST : 게시물 등록
+# GET : 게시물 리스팅, 추천 컨텐츠 리스팅 / POST : 게시물 등록
 def article(request):
     if request.method == 'GET':
         user = request.user.is_authenticated
@@ -21,7 +22,46 @@ def article(request):
             all_article = ArticleModel.objects.all()
             random_article = ArticleModel.objects.order_by("?").first()
 
-            return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article})
+            my_preference = ArticleComment.objects.filter(author_id=request.user.id, rating=5) # 사용자가 5점을 준 코멘트 가져오기
+            if my_preference is not None: # 5점을 준 컨텐츠가 있을경우
+                num = list(my_preference.values()) # article_id를 빼오기 위해 리스트화
+                for i in num:
+                    drama_num = i['article_id']
+
+                content = ArticleModel.objects.filter(id=drama_num) # 사용자가 5점 준 comment.article_id에 해당하는 게시물 불러오기
+                content = list(content.values()) # title을 빼오기 위해 리스트화
+                for i in content:
+                    title = i['title']
+
+                df = pd.read_csv('kdrama_encoded.csv')
+                name = list(df['Name'])
+
+                drama_index = name.index(f'{title}') # 사용자가 5점을 준 드라마의 csv파일안의 인덱스 빼오기
+
+                for i in range(0, len(df['token'])):
+                    df['token'][i] = df['token'][i].split(',')
+                documents = [TaggedDocument(doc, [i]) for i, doc in enumerate(df['token'])]
+                model = Doc2Vec.load('static/models/content.model')
+
+                inferred_doc_vec = model.infer_vector(df['token'][drama_index]) # 사용자가 5점 준 드라마와 비슷한 컨텐츠 뽑아오기
+                # model.infer_vector(df['token'][int]) 함수에 넣어준 인덱스 값의 드라마 선택
+                most_similar_docs = model.docvecs.most_similar([inferred_doc_vec], topn=10)
+
+                for index, similarity in most_similar_docs:
+                    print(f'{index}, similarity: {similarity}')
+                    print(documents[index])
+
+                index = []
+                similarity = []
+                for i in range(0, 10):
+                    index.append(most_similar_docs[i][0])
+                    similarity.append(most_similar_docs[i][1])
+                print(index)
+                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article,
+                              'recommendation_list': index})
+            else:
+                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article})
+
         else:
             return redirect('/sign-in')
     elif request.method == 'POST':
