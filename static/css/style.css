@@ -1,3 +1,11 @@
+@media (max-width: 1400px) {
+    .menu-none {
+        display: none;
+    }
+}
+
+
+
 .navbar {
     background-color: transparent;
     width: 100%;
@@ -20,9 +28,16 @@ body {
 }
 
 @keyframes move_repeat {
-    0% {background-position: left;}
-    50% {background-position: right;}
-    100% {background-position: left;}
+    0% {
+        background-position: left;
+    }
+    50% {
+        background-position: right;
+    }
+    100% {
+        background-position: left;
+
+    }
 }
 
 .login-body {

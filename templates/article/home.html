@@ -15,15 +15,45 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
     />
-    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
     <head/>
     <style>
-        @media (max-width: 1350px) {
+        @media (max-width: 1400px) {
+            .title-text {
+                display: none;
+            }
 
+            .content-synopsis {
+                display: none;
+            }
+
+            .menu-none {
+                display: none;
+            }
         }
+
+        @media (max-width: 787px) {
+            .menu-none {
+                display: none;
+            }
+
+            .poster > img {
+                max-width: 100%;
+                width: auto !important;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 763px) {
+            .menu-live {
+                display: none;
+            }
+        }
+
         .navbar > img {
             margin-left: 30px;
             width: 130px;
@@ -82,7 +112,7 @@
         }
 
         .search-btn {
-            margin-top: 25px;
+            margin-top: 26px;
             height: 40px;
             background-color: red;
             color: ivory;
@@ -108,12 +138,12 @@
 
 
         .else {
+            display: flex;
+            flex-direction: row;
             margin: auto;
-            margin-left: 200px;
         }
 
         .wrap {
-            margin: auto;
             margin-top: 50px;
             text-align: left;
             width: 100%;
@@ -122,7 +152,7 @@
 
         .poster > img {
             border: 2px solid white;
-            margin-right: 100px;
+
         }
 
         .title-text {
@@ -132,14 +162,24 @@
             width: 600px;
             height: 800px;
             margin-top: 100px;
+            margin-right: 50px;
 
         }
 
         .content-title {
             font-size: 50px;
         }
+
         .content-synopsis {
             font-size: 40px;
+        }
+
+        .recommend {
+            width: 600px;
+            background-color: black;
+            border-radius: 10px;
+            border: dashed 1px red;
+
         }
     </style>
 
@@ -151,7 +191,7 @@
         <img src=../static/img/logo.png>
     </a>
     <p class="menu menu-none">
-        <a  href="/" style="color: white; width: 30px"> 홈 </a>
+        <a href="/" style="color: white; width: 30px"> 홈 </a>
     </p>
     <p class="menu menu-none">
         <a href="/like" style=" color:white;width: 120px; display: block "> 내가찜한콘텐츠 </a>
@@ -168,11 +208,11 @@
         <a style="word-spacing:50px; color: white; display: block; width: 40px; display: block"
            href="{% url 'tag_cloud' %}">태그</a>
     </p>
-    <form action="/search/" method="post">
-        <div class="search ">
+    <form class="search-box" action="/search/" method="post">
+        <div class="search">
             {% csrf_token %}
             <input class="form-control me-2 menu"
-                   style="width: 265px; height: 35px; margin-left: 300px;"
+                   style="width: 265px; height: 35px;"
                    type="search" placeholder="검색" aria-label="Search" name="search" id="search">
             <button class="search-btn">검색</button>
         </div>
@@ -181,21 +221,22 @@
 <div class="wrap">
     <div class="detail">
         <div class="else">
-            <div class="title-text">오늘의 추천 드라마
-                <br>
+            <div class="title-text">
+                <div class="recommend">오늘의 추천 드라마</div>
                 <br>
                 <p class="content-title">"{{ random_article.title }}"</p>
                 <p class="content-synopsis">{{ random_article.synopsis }}</p>
                 <p class="recomm">{{ request.user }}님을 위한 추천 리스트{{ recommendation_list }}</p>
             </div>
-        </div>
-        <div class="poster">
-            <a href="/article/{{ random_article.id }}" class="random poster"
-               style="text-decoration-line : none; color: black;">
-                <img src="{{ random_article.poster }}" class="card-img-top" style="width: 900px; height: 800px; ">
-            </a>
+            <div class="poster">
+                <a href="/article/{{ random_article.id }}" class="random poster"
+                   style="text-decoration-line : none; color: black;">
+                    <img src="{{ random_article.poster }}" class="card-img-top" style="width: 800px; height: 800px; ">
+                </a>
+            </div>
         </div>
     </div>
+</div>
 </div>
 <div id="article" class="article">
     <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -227,54 +268,54 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                        <div class="modal-body">
+                    <div class="modal-body">
 
-                            <div class="form-group mt-2 mb-2">
-                                <label for="username">제목</label>
-                                <input type="text" class="form-control" id="title" name="title">
-                            </div>
-                            <div class="form-group mt-2 mb-2">
-                                <label for="username">이미지</label>
-                                    <input type="file" accept="image/*" required
-                                           id="poster" name="poster" />
-                            </div>
-                            <div class="form-group mt-2 mb-2">
-                                <label for="password">줄거리</label>
-                                <input type="text" class="form-control" id="synopsis" name="synopsis">
-                            </div>
-                            <div class="form-group mt-2 mb-2">
-                                <label for="password">장르</label>
-                                <input type="text" class="form-control" id="genre" name="genre">
-                            </div>
-                            <div class="form-group mt-2 mb-2">
-                                <label for="password">태그</label>
-                                <input type="text" class="form-control" id="tags" name="tags">
-                            </div>
-                            <div class="form-group mt-2 mb-2">
-                                <label for="password">캐스팅 배우</label>
-                                <input type="text" class="form-control" id="cast" name="cast">
-                            </div>
-                            <div class="form-group mt-2 mb-2">
-                                <label for="password">출시일</label>
-                                <input type="date" class="form-control" id="aired_date" name="aired_date">
-                            </div>
-                            <div class="form-group mt-2 mb-2">
-                                <label for="password">에피소드 수</label>
-                                <input type="number" class="form-control" id="episode" name="episode">
-                            </div>
-                            <div class="form-group mt-2 mb-2">
-                                <label for="password">연령제한 (15 or 19)</label>
-                                <select class="form-control" id="aged" name="aged" required>
-                                    <option value="15">15세미만 관람불가</option>
-                                    <option value="19">19세미만 관람불가</option>
-                                    <option value="" disabled selected>연령제한을 선택해 주세요.</option>
-                                </select>
-                            </div>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="username">제목</label>
+                            <input type="text" class="form-control" id="title" name="title">
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="modal-post" data-bs-dismiss="modal">닫기</button>
-                            <button type="submit" class="modal-post">생성</button>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="username">이미지</label>
+                            <input type="file" accept="image/*" required
+                                   id="poster" name="poster"/>
                         </div>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="password">줄거리</label>
+                            <input type="text" class="form-control" id="synopsis" name="synopsis">
+                        </div>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="password">장르</label>
+                            <input type="text" class="form-control" id="genre" name="genre">
+                        </div>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="password">태그</label>
+                            <input type="text" class="form-control" id="tags" name="tags">
+                        </div>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="password">캐스팅 배우</label>
+                            <input type="text" class="form-control" id="cast" name="cast">
+                        </div>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="password">출시일</label>
+                            <input type="date" class="form-control" id="aired_date" name="aired_date">
+                        </div>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="password">에피소드 수</label>
+                            <input type="number" class="form-control" id="episode" name="episode">
+                        </div>
+                        <div class="form-group mt-2 mb-2">
+                            <label for="password">연령제한 (15 or 19)</label>
+                            <select class="form-control" id="aged" name="aged" required>
+                                <option value="15">15세미만 관람불가</option>
+                                <option value="19">19세미만 관람불가</option>
+                                <option value="" disabled selected>연령제한을 선택해 주세요.</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="modal-post" data-bs-dismiss="modal">닫기</button>
+                        <button type="submit" class="modal-post">생성</button>
+                    </div>
 
                 </div>
             </div>

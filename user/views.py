@@ -25,8 +25,8 @@ def sign_up_view(request):
             return render(request, 'user/signup.html', {'error': '사용자 이름과 비밀번호 및 닉네임은 필수 값 입니다'})
         if password!=password2:
             return render(request, 'user/signup.html', {'error': '비밀번호를 다시 확인해주세요'})
-        exist_user = get_user_model().objects.filter(username=username)
-        exist_nickname = get_user_model().objects.filter(nickname=nickname)
+        exist_user = get_user_model().objects.get(username=username)
+        exist_nickname = get_user_model().objects.get(nickname=nickname)
         if exist_user:
             return render(request, 'user/signup.html', {'error': '사용자가 존재합니다'})
         else:
@@ -47,7 +47,7 @@ def sign_in_view(request):
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
 
-        me= auth.authenticate(request, username=username, password=password)
+        me= auth.authenticate(request, username=username, password=password) # db 회원 값이 있나없나 검증해주는거
         if me is not None:
             auth.login(request, me)
             return redirect('/')

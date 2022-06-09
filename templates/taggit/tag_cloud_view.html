@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>태그</title>
-
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../../static/img/favicon.png"/>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link
@@ -13,10 +15,14 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
     />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
+    />
     {#CSS 파일 경로#}
     <link rel="stylesheet" href="../../static/css/tag_sytle.css?after">
 </head>
-
 <body>
 {#상단바#}
 <div class="header">
@@ -24,7 +30,7 @@
         <img src=../static/img/logo.png>
     </a>
     <p class="menu menu-none">
-        <a  href="/" style="color: white; width: 30px"> 홈 </a>
+        <a href="/" style="color: white; width: 30px"> 홈 </a>
     </p>
     <p class="menu menu-none">
         <a href="/like" style=" color:white;width: 120px; display: block "> 내가찜한콘텐츠 </a>
@@ -41,11 +47,11 @@
         <a style="word-spacing:50px; color: white; display: block; width: 40px; display: block"
            href="{% url 'tag_cloud' %}">태그</a>
     </p>
-    <form action="/search/" method="post">
-        <div class="search ">
+    <form class="search" action="/search/" method="post">
+        <div class="search">
             {% csrf_token %}
             <input class="form-control me-2 menu"
-                   style="width: 265px; height: 35px; margin-left: 300px;"
+                   style="width: 265px; height: 35px;"
                    type="search" placeholder="검색" aria-label="Search" name="search" id="search">
             <button class="search-btn">검색</button>
         </div>
@@ -59,11 +65,75 @@
         {% for tag in tags %}
             <a style="text-decoration: none" href="{% url 'tagged_object_list' tag.name %}">
                         <span class="badge rounded-pill bg-primary">
-                            {{ tag.name }}({{ tag.num_times }})
+                            {{ tag.name }}
                         </span>
             </a>
         {% endfor %}
     </div>
 </form>
+<div id="upload">
+    <form class="form-area" method="post" action="/article/">
+        {% csrf_token %}
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">게시물 생성하기</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="form-area" method="post" action="/article/">
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            <div class="form-group mt-2 mb-2">
+                                <label for="username">제목</label>
+                                <input type="text" class="form-control" id="title" name="title">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="username">이미지</label>
+                                <input type="text" class="form-control" id="poster" name="poster">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">줄거리</label>
+                                <input type="text" class="form-control" id="synopsis" name="synopsis">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">장르</label>
+                                <input type="text" class="form-control" id="genre" name="genre">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">태그</label>
+                                <input type="text" class="form-control" id="tags" name="tags">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">캐스팅 배우</label>
+                                <input type="text" class="form-control" id="cast" name="cast">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">출시일</label>
+                                <input type="date" class="form-control" id="aired_date" name="aired_date">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">에피소드 수</label>
+                                <input type="number" class="form-control" id="episode" name="episode">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">연령제한 (15 or 19)</label>
+                                <select class="form-control" id="aged" name="aged" required>
+                                    <option value="15">15세미만 관람불가</option>
+                                    <option value="19">19세미만 관람불가</option>
+                                    <option value="" disabled selected>연령제한을 선택해 주세요.</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="modal-post" data-bs-dismiss="modal">닫기</button>
+                            <button type="submit" class="modal-post">생성</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>
