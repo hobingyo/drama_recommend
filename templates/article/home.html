@@ -226,12 +226,13 @@
                 <br>
                 <p class="content-title">"{{ random_article.title }}"</p>
                 <p class="content-synopsis">{{ random_article.synopsis }}</p>
-                <p class="recomm">{{ request.user }}님을 위한 추천 리스트{{ recommendation_list }}</p>
+
             </div>
             <div class="poster">
                 <a href="/article/{{ random_article.id }}" class="random poster"
                    style="text-decoration-line : none; color: black;">
-                    <img src="../media/{{ random_article.poster }}" class="card-img-top" style="width: 800px; height: 800px; ">
+                    <img src="../media/{{ random_article.poster }}" class="card-img-top"
+                         style="width: 800px; height: 800px; ">
                 </a>
             </div>
         </div>
@@ -255,6 +256,30 @@
                 </div>
             </div>
         {% endfor %}
+    </div>
+</div>
+<div id="article_recomm" class="article_recomm">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <h5 class="recomm">{{ request.user }}님의 최고점 드라마와 비슷한 드라마 10가지</h5>
+            {% for recom in recomm_articles %}
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/article/{{ recom.title }}" style="text-decoration-line : none; color: black;">
+                            <img src="../static/img/poster/{{ recom.title }}.jpg" class="card-img-top"
+                                 style="height: 450px">
+                        </a>
+                        <div class="card-body">
+                            <a href="/article/{{ recom.id }}" style="text-decoration-line : none; color: black;">
+                                <h5 class="card-title">{{ recom.title }}</h5>
+                            </a>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+{#    {% for similarity in similarity %}#}
+{#        <p>{{ request.user }}님의 취향 유사도 {{ similarity }}</p>#}
+{#    {% endfor %}#}
     </div>
 </div>
 <div id="article_list" class="article_list">

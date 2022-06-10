@@ -1,6 +1,6 @@
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render, redirect
-from .models import ArticleModel, ArticleComment, UserLike, ArticleList
+from .models import ArticleModel, ArticleComment, UserLike, ArticleList, ArticleRecomm
 from django.contrib.auth.decorators import login_required
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import pandas as pd
@@ -84,11 +84,16 @@ def article(request):
                 index = []
                 similarity = []
                 for i in range(0, 10):
-                    index.append(most_similar_docs[i][0])
+                    index.append(most_similar_docs[i][0]+1)
+
                     similarity.append(most_similar_docs[i][1])
                 print(index)
+                ArticleRecomm.objects.all().delete()
+                articles = ArticleList.objects.filter(id__in=index)
+
+
                 return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article, 'article_list':all_article_list,
-                              'recommendation_list': index})
+                              'recommendation_list': index, 'recomm_articles': articles, 'similarity': similarity})
             else:
                 return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article, 'article_list':all_article_list})
 

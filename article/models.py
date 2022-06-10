@@ -58,3 +58,19 @@ class ArticleList(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+# 추천 드라마
+class ArticleRecomm(models.Model):
+    class Meta:
+        db_table = "article_recomm"
+
+    title = models.CharField(max_length=256)
+    synopsis = models.CharField(max_length=256)
+    genre = models.CharField(max_length=256)
+    tags = TaggableManager(blank=True)
+    cast = models.CharField(max_length=256)
+    rating = models.FloatField()
+    episode = models.IntegerField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
