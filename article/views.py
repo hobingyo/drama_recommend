@@ -1,9 +1,10 @@
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render, redirect
-from .models import ArticleModel, ArticleComment, UserLike
+from .models import ArticleModel, ArticleComment, UserLike, ArticleList
 from django.contrib.auth.decorators import login_required
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import pandas as pd
+import datetime
 
 
 # 메인
@@ -19,6 +20,33 @@ def home(request):
 def article(request):
     if request.method == 'GET':
         user = request.user.is_authenticated
+
+        ### 데이터베이스에 있는 100개 드라마데이터 불러오기
+        df = pd.read_csv('kdrama_encoded.csv')
+        # df1 = pd.read_csv('top100_kdrama.csv')
+        print(range(0, len(df['Name'])))
+
+        try:
+            ArticleList.objects.get(id=1)
+        except:
+            for i in range(0, len(df['Name'])):
+
+                title = df['Name'][i]
+                synopsis = df['Synopsis'][i]
+                genre = df['Genre'][i]
+                cast = df['Cast'][i]
+                episode = df['Number of Episode'][i]
+                # aired_date = df1['Aired Date'][i]
+                tags = df['Tags'][i].split(',')
+
+
+                article_list = ArticleList.objects.create(title=title, synopsis=synopsis,genre=genre,
+                                                          episode=episode, cast=cast, rating=0, tags=tags)
+
+                article_list.save()
+                ### 데이터베이스에 있는 100개 드라마데이터 불러오기
+        all_article_list = ArticleList.objects.all()
+
         if user:
             all_article = ArticleModel.objects.all()
             random_article = ArticleModel.objects.order_by("?").first()
@@ -59,10 +87,10 @@ def article(request):
                     index.append(most_similar_docs[i][0])
                     similarity.append(most_similar_docs[i][1])
                 print(index)
-                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article,
+                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article, 'article_list':all_article_list,
                               'recommendation_list': index})
             else:
-                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article})
+                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article, 'article_list':all_article_list})
 
         else:
             return redirect('/sign-in')

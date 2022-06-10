@@ -231,7 +231,7 @@
             <div class="poster">
                 <a href="/article/{{ random_article.id }}" class="random poster"
                    style="text-decoration-line : none; color: black;">
-                    <img src="{{ random_article.poster }}" class="card-img-top" style="width: 800px; height: 800px; ">
+                    <img src="../media/{{ random_article.poster }}" class="card-img-top" style="width: 800px; height: 800px; ">
                 </a>
             </div>
         </div>
@@ -245,6 +245,25 @@
                 <div class="card h-100">
                     <a href="/article/{{ ac.id }}" style="text-decoration-line : none; color: black;">
                         <img src="../media/{{ ac.poster }}" class="card-img-top" style="height: 450px">
+                    </a>
+                    <div class="card-body">
+                        <a href="/article/{{ ac.id }}" style="text-decoration-line : none; color: black;">
+                            <h5 class="card-title">{{ ac.title }}</h5>
+                        </a>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div id="article_list" class="article_list">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for ac in article_list %}
+            <div class="col">
+                <div class="card h-100">
+                    <a href="/article/{{ ac.id }}" style="text-decoration-line : none; color: black;">
+                        <img src="../static/img/poster/{{ ac.title }}.jpg" class="card-img-top" style="height: 450px">
                     </a>
                     <div class="card-body">
                         <a href="/article/{{ ac.id }}" style="text-decoration-line : none; color: black;">

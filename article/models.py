@@ -42,3 +42,19 @@ class UserLike(models.Model):
 
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     article = models.ForeignKey(ArticleModel, on_delete=models.CASCADE)
+
+# 데이터베이스 드라마 리스트 모델
+class ArticleList(models.Model):
+    class Meta:
+        db_table = "article_list"
+
+    title = models.CharField(max_length=256)
+    synopsis = models.CharField(max_length=256)
+    genre = models.CharField(max_length=256)
+    tags = TaggableManager(blank=True)
+    cast = models.CharField(max_length=256)
+    rating = models.FloatField()
+    episode = models.IntegerField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
