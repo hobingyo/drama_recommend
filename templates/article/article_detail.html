@@ -27,13 +27,13 @@
 
     }
 
-    @media (max-width: 763px) {
+    @media (max-width: 790px) {
         .menu-live {
             display: none;
         }
     }
 
-    @media (max-width: 1595px) {
+    @media (max-width: 1620px) {
 
         .detail {
             max-width: 100%;
@@ -54,19 +54,18 @@
         }
 
     }
-
-    @media (max-width: 970px) {
-        .zzim {
-            display: none;
+    @media (max-width: 810px){
+        .comment-box {
+            max-width: 100%;
+            width: auto !important;
+            height: auto;
+        }
+        .poster > img {
+            max-width: 100%;
+            width: auto !important;
+            height: auto;
         }
     }
-
-    @media (max-width: 1249px) {
-        .detail {
-            margin-left: 0px;
-        }
-    }
-
 
     .navbar > img {
         margin-left: 30px;
@@ -112,9 +111,10 @@
     }
 
     .detail {
+        margin: auto;
         display: flex;
         flex-direction: row;
-        margin-left: 200px;
+
     }
 
     .wrap {
@@ -136,11 +136,12 @@
     .poster > img {
         width: 700px;
         height: 700px;
+        margin: auto;
     }
 
     .else {
-        width: 700px;
-        height: 700px;
+        width: 600px;
+        height: 500px;
         margin-top: 150px;
         font-size: 20px;
         margin-left: 100px;
@@ -152,13 +153,11 @@
     }
 
     .zzim {
-        margin-top: 750px;
+        text-align: center;
+        width: 110px;
+        height: 40px;
+        margin-top: 80px;
         margin-right: 50px;
-    }
-
-    .zzim > button {
-        width: 80px;
-        height: 30px;
         background-color: crimson;
     }
 
@@ -167,6 +166,7 @@
         margin: auto;
         display: flex;
         flex-direction: column;
+        margin-top: 80px;
     }
 
     .media-body {
@@ -265,20 +265,20 @@
                         </a>
                     {% endfor %}
                 {% endif %}
-            </div>
-            <div class="zzim">
-                {% if like %}
-                    <button><a href="/article/like/{{ article.id }}" class="card-link"
+            {% if like %}
+                    <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
                                style="color: ivory; text-decoration-color: transparent;">[찜 취소]</a>
                     </button>
                 {% else %}
-                    <button><a href="/article/like/{{ article.id }}" class="card-link"
+                    <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
                                style="color: ivory; text-decoration-color: transparent;">[찜]</a>
                     </button>
                 {% endif %}
             </div>
+
         </div>
     </div>
+</div>
     <div class="comment-box">
         <div class="comment">
             <form class="comment-input input-group mb-3" action="/article/comment/{{ article.id }}" method="post">
@@ -329,7 +329,7 @@
         </div>
     </div>
 </div>
-</div>
+
 </form>
 <div id="upload">
     <form class="form-area" method="post" action="/article/">
