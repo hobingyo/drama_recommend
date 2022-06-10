@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>태그 포스트</title>
+    <title>'{{ tagname }}' 태그의 드라마</title>
     {#CSS 불러오기#}
     <!-- favicon -->
     <link rel="shortcut icon" href="../../static/img/favicon.png"/>
@@ -27,7 +27,7 @@
 <body>
 <div class="header">
     <a href="/" class="navbar">
-        <img src=../static/img/logo.png>
+        <img src="/static/img/logo.png" style="width: 135px; height: 45px; margin-left: 30px;">
     </a>
     <p class="menu menu-none">
         <a href="/" style="color: white; width: 30px"> 홈 </a>
@@ -57,8 +57,10 @@
         </div>
     </form>
 </div>
-<br>
-<h3 class="mt-2">Posts for tag - {{ tagname }}</h3>
+<hr>
+<div class="tag_introduction">
+    <h1>'{{ tagname }}' 태그의 드라마 목록입니다.</h1>
+</div>
 <hr>
 <div class="container">
     <div class="card-body">
@@ -80,6 +82,72 @@
             {% endfor %}
         </div>
     </div>
+</div>
+
+<div id="upload">
+    <form class="form-area" method="post" action="/article/">
+        {% csrf_token %}
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">게시물 생성하기</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="form-area" method="post" action="/article/">
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            <div class="form-group mt-2 mb-2">
+                                <label for="username">제목</label>
+                                <input type="text" class="form-control" id="title" name="title">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="username">이미지</label>
+                                <input type="file" accept="image/*" required
+                                       id="poster" name="poster"/>
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">줄거리</label>
+                                <input type="text" class="form-control" id="synopsis" name="synopsis">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">장르</label>
+                                <input type="text" class="form-control" id="genre" name="genre">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">태그</label>
+                                <input type="text" class="form-control" id="tags" name="tags">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">캐스팅 배우</label>
+                                <input type="text" class="form-control" id="cast" name="cast">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">출시일</label>
+                                <input type="date" class="form-control" id="aired_date" name="aired_date">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">에피소드 수</label>
+                                <input type="number" class="form-control" id="episode" name="episode">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="password">연령제한 (15 or 19)</label>
+                                <select class="form-control" id="aged" name="aged" required>
+                                    <option value="15">15세미만 관람불가</option>
+                                    <option value="19">19세미만 관람불가</option>
+                                    <option value="" disabled selected>연령제한을 선택해 주세요.</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="modal-post" data-bs-dismiss="modal">닫기</button>
+                            <button type="submit" class="modal-post">생성</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>

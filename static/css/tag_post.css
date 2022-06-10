@@ -2,6 +2,9 @@ body {
     background-color: #721010;
 }
 
+hr {
+    color: transparent;
+}
 /*상단바*/
 .header {
     z-index: 1;
@@ -159,4 +162,13 @@ button {
     .menu-live {
         display: none;
     }
+}
+
+.tag_introduction {
+    padding-top: 90px;
+    width: 100%;
+    height: 180px;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0));
 }
