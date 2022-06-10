@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'article',
+    'recommendation',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
 ]

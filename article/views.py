@@ -2,8 +2,9 @@ from django.views.generic import ListView, TemplateView
 from django.shortcuts import render, redirect
 from .models import ArticleModel, ArticleComment, UserLike
 from django.contrib.auth.decorators import login_required
-import pandas as pd
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
+import pandas as pd
+
 
 # 메인
 def home(request):
@@ -23,7 +24,7 @@ def article(request):
             random_article = ArticleModel.objects.order_by("?").first()
 
             my_preference = ArticleComment.objects.filter(author_id=request.user.id, rating=5) # 사용자가 5점을 준 코멘트 가져오기
-            if my_preference is not None: # 5점을 준 컨텐츠가 있을경우
+            if len(my_preference) != 0: # 5점을 준 컨텐츠가 있을경우
                 num = list(my_preference.values()) # article_id를 빼오기 위해 리스트화
                 for i in num:
                     drama_num = i['article_id']
