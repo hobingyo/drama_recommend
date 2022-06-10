@@ -26,6 +26,7 @@ def article(request):
             my_preference = ArticleComment.objects.filter(author_id=request.user.id, rating=5) # 사용자가 5점을 준 코멘트 가져오기
             if len(my_preference) != 0: # 5점을 준 컨텐츠가 있을경우
                 num = list(my_preference.values()) # article_id를 빼오기 위해 리스트화
+                print(num)
                 for i in num:
                     drama_num = i['article_id']
 
@@ -36,7 +37,7 @@ def article(request):
 
                 df = pd.read_csv('kdrama_encoded.csv')
                 name = list(df['Name'])
-
+                print(title)
                 drama_index = name.index(f'{title}') # 사용자가 5점을 준 드라마의 csv파일안의 인덱스 빼오기
 
                 for i in range(0, len(df['token'])):
