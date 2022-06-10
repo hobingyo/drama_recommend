@@ -41,7 +41,7 @@ button {
 .search-btn {
     margin-top: 25px;
     height: 40px;
-    background-color: red;
+    background-color: #c40000;
     color: ivory;
     width: 50px;
     border-radius: 5px;
@@ -129,7 +129,8 @@ button {
 
 .card-title {
     color: white;
-    text-align: center;
+    display: flex;
+    margin: auto;
 }
 
 @media (max-width: 1400px) {

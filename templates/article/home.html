@@ -114,7 +114,7 @@
         .search-btn {
             margin-top: 26px;
             height: 40px;
-            background-color: red;
+            background-color: #c40000;
             color: ivory;
             width: 50px;
         }
@@ -123,12 +123,20 @@
             margin: 50px 20px 10px 20px;
         }
 
+        .blured_BG {
+            background-image: url("{{random_article.poster}}");
+
+        }
+
+
         .detail {
             display: flex;
             flex-direction: row;
             width: 100%;
-            height: 800px;
+            height: 830px;
             margin: auto;
+            background-color: rgba(0, 0, 0, 0.39);
+            backdrop-filter: blur(5px);
         }
 
         .poster {
@@ -140,7 +148,7 @@
         .else {
             display: flex;
             flex-direction: row;
-            margin: auto;
+            margin: 0 auto 0 auto;
         }
 
         .wrap {
@@ -157,36 +165,67 @@
 
         .title-text {
             color: white;
-            font-size: 60px;
+            font-size: 40px;
             text-align: center;
-            width: 600px;
-            height: 800px;
+            width: 500px;
+            height: 700px;
             margin-top: 100px;
             margin-right: 50px;
 
         }
 
         .content-title {
-            font-size: 50px;
+            padding-top: 20px;
+            font-size: 60px;
         }
 
         .content-synopsis {
-            font-size: 40px;
+            font-size: 30px;
         }
 
         .recommend {
-            width: 600px;
+            width: 500px;
             background-color: black;
             border-radius: 10px;
             border: dashed 1px red;
+            padding: 5px 5px 10px 5px;
+            box-shadow:0px 5px 5px 1px #333333;
+        }
+        .h-100 {
+            text-align: center;
+        }
+        .card {
+            align-items: center;
+        }
+        .post_seperate {
+            width: 100%;
+            height: 100px;
+            color: white;
+            background-color: black;
+            display: flex;
+            margin: 0 auto 15px auto;
+            padding-left: 30px;
+            align-items: center;
+        }
 
+        .main_post_box {
+            width: 500px;
+            height: 500px;
+            background-image: url("https://img.freepik.com/free-photo/squared-paper-texture_1154-677.jpg?w=360");
+            align-items: center;
+            border-radius: 15px;
+            color: #262626;
+            box-shadow:0px 5px 5px 1px #333333;
+        }
+        .card-img-top {
+            width: 100%;
+            margin-top: 20px;
         }
     </style>
 
 
 <body>
 <div class="header">
-
     <a href="/" class="navbar">
         <img src=../static/img/logo.png>
     </a>
@@ -219,24 +258,32 @@
     </form>
 </div>
 <div class="wrap">
-    <div class="detail">
-        <div class="else">
-            <div class="title-text">
-                <div class="recommend">오늘의 추천 드라마</div>
-                <br>
-                <p class="content-title">"{{ random_article.title }}"</p>
-                <p class="content-synopsis">{{ random_article.synopsis }}</p>
-                <p class="recomm">{{ request.user }}님을 위한 추천 리스트{{ recommendation_list }}</p>
-            </div>
-            <div class="poster">
-                <a href="/article/{{ random_article.id }}" class="random poster"
-                   style="text-decoration-line : none; color: black;">
-                    <img src="{{ random_article.poster }}" class="card-img-top" style="width: 800px; height: 800px; ">
-                </a>
+    <div class="blured_BG">
+        <div class="detail">
+            <div class="else">
+                <div class="title-text">
+                    <div class="recommend">오늘의 추천 드라마</div>
+                    <br>
+                    <div class="main_post_box">
+                        <p class="content-title">"{{ random_article.title }}"</p>
+                        <p class="content-synopsis">{{ random_article.synopsis }}</p>
+                    </div>
+                </div>
+                <div class="poster">
+                    <a href="/article/{{ random_article.id }}" class="random poster"
+                       style="text-decoration-line : none; color: black;">
+                        <img src="{{ random_article.poster }}" class="card-img-top"
+                             style="width: 470px; height: 670px; margin-top: 50px; box-shadow:0px 5px 5px 1px #333333;">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+<br>
+<div class="post_seperate">
+    <h1>{{ request.user }}님을 위한 추천 리스트{{ recommendation_list }}</h1>
 </div>
 <div id="article" class="article">
     <div class="row row-cols-1 row-cols-md-4 g-4">
