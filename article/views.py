@@ -23,7 +23,8 @@ def article(request):
 
         ### 데이터베이스에 있는 100개 드라마데이터 불러오기
         df = pd.read_csv('kdrama_encoded.csv')
-        # df1 = pd.read_csv('top100_kdrama.csv')
+        df1 = pd.read_csv('top100_kdrama.csv')
+        print(df1.head())
         print(range(0, len(df['Name'])))
 
         try:
@@ -36,12 +37,14 @@ def article(request):
                 genre = df['Genre'][i]
                 cast = df['Cast'][i]
                 episode = df['Number of Episode'][i]
-                # aired_date = df1['Aired Date'][i]
                 tags = df['Tags'][i].split(',')
+                print(tags)
+                aged = df['aged'][i]
+                aired_date = df1['Aired Date'][i]
 
 
-                article_list = ArticleList.objects.create(title=title, synopsis=synopsis,genre=genre,
-                                                          episode=episode, cast=cast, rating=0, tags=tags)
+                article_list = ArticleList.objects.create(title=title, synopsis=synopsis,genre=genre,tags=tags, aged=aged, aired_date=aired_date,
+                                                          episode=episode, cast=cast, rating=0)
 
                 article_list.save()
                 ### 데이터베이스에 있는 100개 드라마데이터 불러오기

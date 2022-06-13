@@ -55,6 +55,8 @@ class ArticleList(models.Model):
     cast = models.CharField(max_length=256)
     rating = models.FloatField()
     episode = models.IntegerField()
+    aired_date = models.CharField(max_length=256)
+    aged = models.IntegerField()
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
