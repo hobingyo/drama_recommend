@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 ]
 
 TAGGIT_CASE_INSENSITIVE = True
-TAGGIT_LIMIT = 50
+TAGGIT_LIMIT = 1000
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

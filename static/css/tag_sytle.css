@@ -8,7 +8,6 @@ body {
     animation-name: move_repeat;
     animation-duration: 60s;
     animation-iteration-count: infinite;
-    background-repeat: no-repeat;
     height: 1080px;
     backdrop-filter: blur(5px);
     align-items: center;
@@ -156,7 +155,7 @@ button {
 }
 
 .tag-box {
-    width: 400px;
+    width: 800px;
     background-color: black;
     border-radius: 15px;
     display: flex;
@@ -170,31 +169,29 @@ button {
 }
 
 .tag-cloud {
-    width: 400px;
-    height: 400px;
+    width: 800px;
+    height: 100%;
     text-align: center;
     word-wrap: break-word;
     object-fit: fill;
     word-wrap: break-word;
     text-overflow: clip;
+    display: flex;
+    margin: 5px auto auto auto;
+    text-align: center;
+    white-space: normal;
+}
+.badge {
+    background-color: #2563ff;
 }
 
-
 .badge:hover {
-
+    background-color: #b90033;
     transform: scale(1.1);
 }
 
 .container {
     margin-top: 50px;
-}
-
-.tag-cloud {
-    display: flex;
-    margin: 5px auto auto auto;
-    text-align: center;
-    width: 400px;
-    white-space: normal;
 }
 
 

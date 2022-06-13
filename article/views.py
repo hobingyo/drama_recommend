@@ -80,7 +80,7 @@ def article(request):
 
                 inferred_doc_vec = model.infer_vector(df['token'][drama_index])  # 사용자가 5점 준 드라마와 비슷한 컨텐츠 뽑아오기
                 # model.infer_vector(df['token'][int]) 함수에 넣어준 인덱스 값의 드라마 선택
-                most_similar_docs = model.docvecs.most_similar([inferred_doc_vec], topn=10)
+                most_similar_docs = model.docvecs.most_similar([inferred_doc_vec], topn=5)
 
                 for index, similarity in most_similar_docs:
                     print(f'{index}, similarity: {similarity}')
@@ -88,7 +88,7 @@ def article(request):
 
                 index = []
                 similarity = []
-                for i in range(0, 10):
+                for i in range(0, 5):
                     index.append(most_similar_docs[i][0] + 1)
 
                     similarity.append(most_similar_docs[i][1])
