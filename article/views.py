@@ -1,6 +1,6 @@
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render, redirect
-from .models import ArticleModel, ArticleComment, UserLike, ArticleList, ArticleRecomm
+from .models import ArticleComment, UserLike, ArticleList, ArticleRecomm
 from django.contrib.auth.decorators import login_required
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import pandas as pd
@@ -25,13 +25,13 @@ def article(request):
         df = pd.read_csv('kdrama_encoded.csv')
         df1 = pd.read_csv('top100_kdrama.csv')
 
-
         try:
             ArticleList.objects.get(id=1)
         except:
             for i in range(0, len(df['Name'])):
 
                 title = df['Name'][i]
+                poster = f"Uploaded_Files/{title}.jpg"
                 synopsis = df['Synopsis'][i]
                 genre = df['Genre'][i]
                 cast = df['Cast'][i]
@@ -40,8 +40,8 @@ def article(request):
                 aged = df['aged'][i]
                 aired_date = df1['Aired Date'][i]
 
-
-                article_list = ArticleList.objects.create(title=title, synopsis=synopsis,genre=genre, aged=aged, aired_date=aired_date,
+                article_list = ArticleList.objects.create(title=title, poster=poster, synopsis=synopsis, genre=genre,
+                                                          aged=aged, aired_date=aired_date,
                                                           episode=episode, cast=cast, rating=0)
                 for tag in tags:
                     tag = tag.strip()
@@ -56,29 +56,29 @@ def article(request):
             all_article = ArticleList.objects.all()
             random_article = ArticleList.objects.order_by("?").first()
 
-            my_preference = ArticleComment.objects.filter(author_id=request.user.id, rating=5) # 사용자가 5점을 준 코멘트 가져오기
-            if len(my_preference) != 0: # 5점을 준 컨텐츠가 있을경우
-                num = list(my_preference.values()) # article_id를 빼오기 위해 리스트화
+            my_preference = ArticleComment.objects.filter(author_id=request.user.id, rating=5)  # 사용자가 5점을 준 코멘트 가져오기
+            if len(my_preference) != 0:  # 5점을 준 컨텐츠가 있을경우
+                num = list(my_preference.values())  # article_id를 빼오기 위해 리스트화
 
                 for i in num:
                     drama_num = i['article_id']
 
-                content = ArticleList.objects.filter(id=drama_num) # 사용자가 5점 준 comment.article_id에 해당하는 게시물 불러오기
-                content = list(content.values()) # title을 빼오기 위해 리스트화
+                content = ArticleList.objects.filter(id=drama_num)  # 사용자가 5점 준 comment.article_id에 해당하는 게시물 불러오기
+                content = list(content.values())  # title을 빼오기 위해 리스트화
                 for i in content:
                     title = i['title']
 
                 df = pd.read_csv('kdrama_encoded.csv')
                 name = list(df['Name'])
 
-                drama_index = name.index(f'{title}') # 사용자가 5점을 준 드라마의 csv파일안의 인덱스 빼오기
+                drama_index = name.index(f'{title}')  # 사용자가 5점을 준 드라마의 csv파일안의 인덱스 빼오기
 
                 for i in range(0, len(df['token'])):
                     df['token'][i] = df['token'][i].split(',')
                 documents = [TaggedDocument(doc, [i]) for i, doc in enumerate(df['token'])]
                 model = Doc2Vec.load('static/models/content.model')
 
-                inferred_doc_vec = model.infer_vector(df['token'][drama_index]) # 사용자가 5점 준 드라마와 비슷한 컨텐츠 뽑아오기
+                inferred_doc_vec = model.infer_vector(df['token'][drama_index])  # 사용자가 5점 준 드라마와 비슷한 컨텐츠 뽑아오기
                 # model.infer_vector(df['token'][int]) 함수에 넣어준 인덱스 값의 드라마 선택
                 most_similar_docs = model.docvecs.most_similar([inferred_doc_vec], topn=10)
 
@@ -89,22 +89,23 @@ def article(request):
                 index = []
                 similarity = []
                 for i in range(0, 10):
-                    index.append(most_similar_docs[i][0]+1)
+                    index.append(most_similar_docs[i][0] + 1)
 
                     similarity.append(most_similar_docs[i][1])
                 ArticleRecomm.objects.all().delete()
                 articles = ArticleList.objects.filter(id__in=index)
 
-
-                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article, 'article_list':all_article_list,
-                              'recommendation_list': index, 'recomm_articles': articles, 'similarity': similarity})
+                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article,
+                                                             'article_list': all_article_list,
+                                                             'recommendation_list': index, 'recomm_articles': articles,
+                                                             'similarity': similarity})
             else:
-                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article, 'article_list':all_article_list})
+                return render(request, 'article/home.html', {'article': all_article, 'random_article': random_article,
+                                                             'article_list': all_article_list})
 
         else:
             return redirect('/sign-in')
     elif request.method == 'POST':
-        user = request.user
         title = request.POST.get('title', '')
         poster = request.FILES.get('poster', '')
         synopsis = request.POST.get('synopsis', '')
@@ -115,9 +116,10 @@ def article(request):
         aged = request.POST.get('aged', '')
         tags = request.POST.get('tags', '').split(',')
 
-        my_article = ArticleModel.objects.create(author=user, poster=poster, title=title, synopsis=synopsis,
-                                                 genre=genre,
-                                                 cast=cast, aired_date=aired_date, episode=episode, aged=aged, rating=0)
+        my_article = ArticleList.objects.create(poster=poster, title=title, synopsis=synopsis,
+                                                genre=genre,
+                                                cast=cast, aired_date=aired_date, episode=episode, aged=aged, rating=0)
+
         for tag in tags:
             tag = tag.strip()
             if tag != '':  # 태그를 작성하지 않았을 경우에 저장하지 않기 위해서

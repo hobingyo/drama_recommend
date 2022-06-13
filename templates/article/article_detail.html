@@ -113,6 +113,7 @@
     }
 
     .detail {
+        position: relative;
         margin: auto;
         display: flex;
         flex-direction: row;
@@ -151,7 +152,7 @@
     }
 
     .else > p {
-        width: 600px;
+        width: 500px;
     }
 
     .zzim {
@@ -165,7 +166,6 @@
     }
 
     .comment-box {
-        position: relative;
         width: 800px;
         margin: auto;
         display: flex;
@@ -235,7 +235,7 @@
     <div class="red-box">
         <div class="detail">
             <div class="poster">
-                <img src="../../media/Uploaded_Files/{{ article.title }}.jpg">
+                <img src="../../media/{{ article.poster }}">
             </div>
         <div>
             {% if like %}
