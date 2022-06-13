@@ -60,15 +60,19 @@
 <br>
 <form class="tag-box">
     <div class="tag-cloud" style="word-break-inside: break-all;">
-        {% load taggit_templatetags2_tags %}
-        {% get_tagcloud as tags %} <!--모든 태그 추출해서 tags변수에 할당-->
-        {% for tag in tags %}
-            <a style="text-decoration: none" href="{% url 'tagged_object_list' tag.name %}">
+        <div class="row justify-content-center">
+            {% load taggit_templatetags2_tags %}
+            {% get_tagcloud as tags %} <!--모든 태그 추출해서 tags변수에 할당-->
+            {% for tag in tags %}
+                <div class="col-auto">
+                    <a style="text-decoration: none" href="{% url 'tagged_object_list' tag.name %}">
                         <span class="badge rounded-pill bg-primary">
                             {{ tag.name }}
                         </span>
-            </a>
-        {% endfor %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </form>
 <div id="upload">
@@ -88,11 +92,11 @@
                                 <label for="username">제목</label>
                                 <input type="text" class="form-control" id="title" name="title">
                             </div>
-                        <div class="form-group mt-2 mb-2">
-                            <label for="username">이미지</label>
-                            <input type="file" accept="image/*" required
-                                   id="poster" name="poster"/>
-                        </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="username">이미지</label>
+                                <input type="file" accept="image/*" required
+                                       id="poster" name="poster"/>
+                            </div>
                             <div class="form-group mt-2 mb-2">
                                 <label for="password">줄거리</label>
                                 <input type="text" class="form-control" id="synopsis" name="synopsis">
