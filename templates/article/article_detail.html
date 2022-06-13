@@ -54,12 +54,14 @@
         }
 
     }
-    @media (max-width: 810px){
+
+    @media (max-width: 810px) {
         .comment-box {
             max-width: 100%;
             width: auto !important;
             height: auto;
         }
+
         .poster > img {
             max-width: 100%;
             width: auto !important;
@@ -149,19 +151,21 @@
     }
 
     .else > p {
-        width: 700px;
+        width: 600px;
     }
 
     .zzim {
         text-align: center;
         width: 110px;
         height: 40px;
-        margin-top: 80px;
-        margin-right: 50px;
+        margin-left: 500px;
         background-color: crimson;
+        position: absolute;
+        margin-top: 50px;
     }
 
     .comment-box {
+        position: relative;
         width: 800px;
         margin: auto;
         display: flex;
@@ -233,6 +237,17 @@
             <div class="poster">
                 <img src="../../media/Uploaded_Files/{{ article.title }}.jpg">
             </div>
+        <div>
+            {% if like %}
+                <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
+                                        style="color: ivory; text-decoration-color: transparent;">[찜 취소]</a>
+                </button>
+            {% else %}
+                <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
+                                        style="color: ivory; text-decoration-color: transparent;">[찜]</a>
+                </button>
+            {% endif %}
+        </div>
             <div class="else">
                 <p>제목 : {{ article.title }}</p>
                 <p>연령 : {{ article.aged }}세 미만 시청 불가</p>
@@ -265,69 +280,61 @@
                         </a>
                     {% endfor %}
                 {% endif %}
-            {% if like %}
-                    <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
-                               style="color: ivory; text-decoration-color: transparent;">[찜 취소]</a>
-                    </button>
-                {% else %}
-                    <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
-                               style="color: ivory; text-decoration-color: transparent;">[찜]</a>
-                    </button>
-                {% endif %}
+
             </div>
 
         </div>
     </div>
 </div>
-    <div class="comment-box">
-        <div class="comment">
-            <form class="comment-input input-group mb-3" action="/article/comment/{{ article.id }}" method="post">
-                {% csrf_token %}
-                <input type="text" class="form-control" id='comment' name='comment' placeholder="댓글을 작성 해 주세요"/>
-                <select name="rating" id="rating">
-                    <option value="1">★</option>
-                    <option value="2">★★</option>
-                    <option value="3">★★★</option>
-                    <option value="4">★★★★</option>
-                    <option value="5">★★★★★</option>
-                </select>
-                <button class="btn btn-outline-secondary" type="submit">작성</button>
-            </form>
-        </div>
-        <div class="comment-list">
-            {% for cm in comment %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="media">
-                            <div class="media-body">
-                                <h5 class="mt-0"> {{ cm.comment }} </h5>
-                                {% if cm.rating == 1 %}
-                                    <p>★☆☆☆☆</p>
-                                {% elif cm.rating == 2 %}
-                                    <p>★★☆☆☆</p>
-                                {% elif cm.rating == 3 %}
-                                    <p>★★★☆☆</p>
-                                {% elif cm.rating == 4 %}
-                                    <p>★★★★☆</p>
-                                {% elif cm.rating == 5 %}
-                                    <p>★★★★★</p>
-                                {% endif %}
-                                <span> {{ cm.author }} </span>
-                                <span> - {{ cm.created_at | timesince }} 전</span>
-                            </div>
-                            {% if cm.author == user %}
-                                <div style="float: right">
-                                    <a href="/article/comment/delete/{{ cm.id }}">
-                                        <span class="badge bg-danger">삭제</span>
-                                    </a>
-                                </div>
+<div class="comment-box">
+    <div class="comment">
+        <form class="comment-input input-group mb-3" action="/article/comment/{{ article.id }}" method="post">
+            {% csrf_token %}
+            <input type="text" class="form-control" id='comment' name='comment' placeholder="댓글을 작성 해 주세요"/>
+            <select name="rating" id="rating">
+                <option value="1">★</option>
+                <option value="2">★★</option>
+                <option value="3">★★★</option>
+                <option value="4">★★★★</option>
+                <option value="5">★★★★★</option>
+            </select>
+            <button class="btn btn-outline-secondary" type="submit">작성</button>
+        </form>
+    </div>
+    <div class="comment-list">
+        {% for cm in comment %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-0"> {{ cm.comment }} </h5>
+                            {% if cm.rating == 1 %}
+                                <p>★☆☆☆☆</p>
+                            {% elif cm.rating == 2 %}
+                                <p>★★☆☆☆</p>
+                            {% elif cm.rating == 3 %}
+                                <p>★★★☆☆</p>
+                            {% elif cm.rating == 4 %}
+                                <p>★★★★☆</p>
+                            {% elif cm.rating == 5 %}
+                                <p>★★★★★</p>
                             {% endif %}
+                            <span> {{ cm.author }} </span>
+                            <span> - {{ cm.created_at | timesince }} 전</span>
                         </div>
+                        {% if cm.author == user %}
+                            <div style="float: right">
+                                <a href="/article/comment/delete/{{ cm.id }}">
+                                    <span class="badge bg-danger">삭제</span>
+                                </a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
+</div>
 </div>
 
 </form>
@@ -348,11 +355,11 @@
                                 <label for="username">제목</label>
                                 <input type="text" class="form-control" id="title" name="title">
                             </div>
-                        <div class="form-group mt-2 mb-2">
-                            <label for="username">이미지</label>
-                            <input type="file" accept="image/*" required
-                                   id="poster" name="poster"/>
-                        </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="username">이미지</label>
+                                <input type="file" accept="image/*" required
+                                       id="poster" name="poster"/>
+                            </div>
                             <div class="form-group mt-2 mb-2">
                                 <label for="password">줄거리</label>
                                 <input type="text" class="form-control" id="synopsis" name="synopsis">
