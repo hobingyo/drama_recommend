@@ -24,8 +24,7 @@ def article(request):
         ### 데이터베이스에 있는 100개 드라마데이터 불러오기
         df = pd.read_csv('kdrama_encoded.csv')
         df1 = pd.read_csv('top100_kdrama.csv')
-        print(df1.head())
-        print(range(0, len(df['Name'])))
+
 
         try:
             ArticleList.objects.get(id=1)
@@ -38,37 +37,40 @@ def article(request):
                 cast = df['Cast'][i]
                 episode = df['Number of Episode'][i]
                 tags = df['Tags'][i].split(',')
-                print(tags)
                 aged = df['aged'][i]
                 aired_date = df1['Aired Date'][i]
 
 
-                article_list = ArticleList.objects.create(title=title, synopsis=synopsis,genre=genre,tags=tags, aged=aged, aired_date=aired_date,
+                article_list = ArticleList.objects.create(title=title, synopsis=synopsis,genre=genre, aged=aged, aired_date=aired_date,
                                                           episode=episode, cast=cast, rating=0)
+                for tag in tags:
+                    tag = tag.strip()
+                    if tag != '':  # 태그를 작성하지 않았을 경우에 저장하지 않기 위해서
+                        article_list.tags.add(tag)
 
                 article_list.save()
                 ### 데이터베이스에 있는 100개 드라마데이터 불러오기
         all_article_list = ArticleList.objects.all()
 
         if user:
-            all_article = ArticleModel.objects.all()
-            random_article = ArticleModel.objects.order_by("?").first()
+            all_article = ArticleList.objects.all()
+            random_article = ArticleList.objects.order_by("?").first()
 
             my_preference = ArticleComment.objects.filter(author_id=request.user.id, rating=5) # 사용자가 5점을 준 코멘트 가져오기
             if len(my_preference) != 0: # 5점을 준 컨텐츠가 있을경우
                 num = list(my_preference.values()) # article_id를 빼오기 위해 리스트화
-                print(num)
+
                 for i in num:
                     drama_num = i['article_id']
 
-                content = ArticleModel.objects.filter(id=drama_num) # 사용자가 5점 준 comment.article_id에 해당하는 게시물 불러오기
+                content = ArticleList.objects.filter(id=drama_num) # 사용자가 5점 준 comment.article_id에 해당하는 게시물 불러오기
                 content = list(content.values()) # title을 빼오기 위해 리스트화
                 for i in content:
                     title = i['title']
 
                 df = pd.read_csv('kdrama_encoded.csv')
                 name = list(df['Name'])
-                print(title)
+
                 drama_index = name.index(f'{title}') # 사용자가 5점을 준 드라마의 csv파일안의 인덱스 빼오기
 
                 for i in range(0, len(df['token'])):
@@ -90,7 +92,6 @@ def article(request):
                     index.append(most_similar_docs[i][0]+1)
 
                     similarity.append(most_similar_docs[i][1])
-                print(index)
                 ArticleRecomm.objects.all().delete()
                 articles = ArticleList.objects.filter(id__in=index)
 
@@ -128,7 +129,7 @@ def article(request):
 # 게시물 상세페이지
 @login_required
 def detail_article(request, id):
-    my_article = ArticleModel.objects.get(id=id)
+    my_article = ArticleList.objects.get(id=id)
     article_comment = ArticleComment.objects.filter(article_id=id).order_by('-created_at')
     my_like = UserLike.objects.filter(user_id=request.user.id, article_id=id)
     return render(request, 'article/article_detail.html',
@@ -139,7 +140,7 @@ def detail_article(request, id):
 @login_required
 def write_comment(request, id):
     if request.method == 'POST':
-        current_article = ArticleModel.objects.get(id=id)
+        current_article = ArticleList.objects.get(id=id)
         user = request.user
         my_comment = ArticleComment()
         my_comment.author = user
@@ -167,7 +168,7 @@ def delete_comment(request, id):
     my_comment = ArticleComment.objects.get(id=id)
     my_comment.delete()
 
-    current_article = ArticleModel.objects.get(id=my_comment.article_id)
+    current_article = ArticleList.objects.get(id=my_comment.article_id)
     comment_rating = ArticleComment.objects.filter(article_id=my_comment.article_id)
     rate = 0
 
@@ -185,7 +186,7 @@ def delete_comment(request, id):
 @login_required
 def like(request, id):
     me = request.user
-    article = ArticleModel.objects.get(id=id)
+    article = ArticleList.objects.get(id=id)
     my_like = UserLike.objects.filter(user_id=me.id, article_id=id)
     if my_like:
         my_like.delete()
@@ -204,14 +205,14 @@ def like_listing(request):
     likes = UserLike.objects.filter(user_id=me.id)
     article = []
     for like in likes:
-        article += ArticleModel.objects.filter(id=like.article_id)
+        article += ArticleList.objects.filter(id=like.article_id)
     return render(request, 'article/like.html', {'article': article})
 
 
 # 검색 페이지 리스팅
 def search(request):
     search = request.POST.get('search', '')
-    my_search = ArticleModel.objects.all().filter(title__contains=search)
+    my_search = ArticleList.objects.all().filter(title__contains=search)
     return render(request, 'article/search.html', {'article': my_search})
 
 
@@ -222,10 +223,10 @@ class TagCloudTV(TemplateView):
 
 class TaggedObjectLV(ListView):
     template_name = 'taggit/tag_with_post.html'
-    model = ArticleModel
+    model = ArticleList
 
     def get_queryset(self):
-        return ArticleModel.objects.filter(tags__name=self.kwargs.get('tag'))
+        return ArticleList.objects.filter(tags__name=self.kwargs.get('tag'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
