@@ -1,3 +1,8 @@
+* {
+    font-family: "S-Core Dream 2";
+    src: url('../../static/font/SCDream2.otf');
+}
+
 body {
     background-color: #721010;
 }

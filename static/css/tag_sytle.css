@@ -2,6 +2,11 @@ a {
     height: 15px;
 }
 
+* {
+    font-family: "S-Core Dream 2";
+    src: url('../../static/font/SCDream2.otf');
+}
+
 
 body {
     background-image: url("../img/sign-in_BG.jpg");
@@ -181,6 +186,7 @@ button {
     text-align: center;
     white-space: normal;
 }
+
 .badge {
     background-color: #2563ff;
 }

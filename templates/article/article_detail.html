@@ -20,6 +20,11 @@
             crossorigin="anonymous"></script>
 </head>
 <style>
+    * {
+        font-family: "S-Core Dream 2";
+        src: url('../../static/font/SCDream2.otf');
+    }
+
     @media (max-width: 1400px) {
         .menu-none {
             display: none;
@@ -237,17 +242,17 @@
             <div class="poster">
                 <img src="../../media/{{ article.poster }}">
             </div>
-        <div>
-            {% if like %}
-                <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
-                                        style="color: ivory; text-decoration-color: transparent;">[찜 취소]</a>
-                </button>
-            {% else %}
-                <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
-                                        style="color: ivory; text-decoration-color: transparent;">[찜]</a>
-                </button>
-            {% endif %}
-        </div>
+            <div>
+                {% if like %}
+                    <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
+                                            style="color: ivory; text-decoration-color: transparent;">[찜 취소]</a>
+                    </button>
+                {% else %}
+                    <button class="zzim"><a href="/article/like/{{ article.id }}" class="card-link"
+                                            style="color: ivory; text-decoration-color: transparent;">[찜]</a>
+                    </button>
+                {% endif %}
+            </div>
             <div class="else">
                 <p>제목 : {{ article.title }}</p>
                 <p>연령 : {{ article.aged }}세 미만 시청 불가</p>
