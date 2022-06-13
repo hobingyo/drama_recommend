@@ -29,6 +29,7 @@ class ArticleList(models.Model):
         db_table = "article_list"
 
     title = models.CharField(max_length=256)
+    poster = models.FileField(upload_to="Uploaded_Files/")
     synopsis = models.CharField(max_length=256)
     genre = models.CharField(max_length=256)
     tags = TaggableManager(blank=True)

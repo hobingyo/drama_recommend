@@ -32,6 +32,7 @@ def article(request):
             for i in range(0, len(df['Name'])):
 
                 title = df['Name'][i]
+                poster = f"Uploaded_Files/{title}.jpg"
                 synopsis = df['Synopsis'][i]
                 genre = df['Genre'][i]
                 cast = df['Cast'][i]
@@ -41,7 +42,7 @@ def article(request):
                 aired_date = df1['Aired Date'][i]
 
 
-                article_list = ArticleList.objects.create(title=title, synopsis=synopsis,genre=genre, aged=aged, aired_date=aired_date,
+                article_list = ArticleList.objects.create(title=title, poster=poster, synopsis=synopsis,genre=genre, aged=aged, aired_date=aired_date,
                                                           episode=episode, cast=cast, rating=0)
                 for tag in tags:
                     tag = tag.strip()
