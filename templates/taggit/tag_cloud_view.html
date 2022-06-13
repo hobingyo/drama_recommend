@@ -59,7 +59,7 @@
 </div>
 <br>
 <form class="tag-box">
-    <div class="tag-cloud">
+    <div class="tag-cloud" style="word-break-inside: break-all;">
         {% load taggit_templatetags2_tags %}
         {% get_tagcloud as tags %} <!--모든 태그 추출해서 tags변수에 할당-->
         {% for tag in tags %}

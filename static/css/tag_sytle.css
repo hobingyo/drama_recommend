@@ -1,3 +1,8 @@
+a {
+    height: 15px;
+
+}
+
 
 body {
     background-image: url("../img/sign-in_BG.jpg");
@@ -159,7 +164,13 @@ button {
     display: flex;
     margin: 100px auto 0 auto;
     opacity: 0.8;
+    word-wrap: break-word;
+}
 
+.tag-cloud {
+    width: 400px;
+    height: 300px;
+    word-wrap: break-word;
 }
 
 .container {

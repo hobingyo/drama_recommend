@@ -24,7 +24,6 @@ body {
     animation-name: move_repeat;
     animation-duration: 60s;
     animation-iteration-count: infinite;
-    background-repeat: no-repeat;
 }
 
 @keyframes move_repeat {
@@ -89,5 +88,5 @@ body {
     text-align: left;
     margin: auto;
     padding-top: 20px;
-    color: #000000;
+    color: #ffffff;
 }

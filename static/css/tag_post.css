@@ -129,7 +129,7 @@ button {
     transition: all 0.1s linear;
 }
 
-.h-100:hover {
+.card:hover {
     transform: scale(1.1);
 }
 
