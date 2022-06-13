@@ -21,6 +21,12 @@
             crossorigin="anonymous"></script>
     <head/>
     <style>
+        * {
+            font-family: "S-Core Dream 2";
+            src: url('../../static/font/SCDream2.otf');
+        }
+
+
         @media (max-width: 1400px) {
             .menu-none {
                 display: none;
@@ -179,11 +185,11 @@
                                 <label for="username">제목</label>
                                 <input type="text" class="form-control" id="title" name="title">
                             </div>
-                        <div class="form-group mt-2 mb-2">
-                            <label for="username">이미지</label>
-                            <input type="file" accept="image/*" required
-                                   id="poster" name="poster"/>
-                        </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="username">이미지</label>
+                                <input type="file" accept="image/*" required
+                                       id="poster" name="poster"/>
+                            </div>
                             <div class="form-group mt-2 mb-2">
                                 <label for="password">줄거리</label>
                                 <input type="text" class="form-control" id="synopsis" name="synopsis">

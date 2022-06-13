@@ -22,6 +22,20 @@
             crossorigin="anonymous"></script>
     <head/>
     <style>
+        * {
+            font-family: "S-Core Dream 2";
+            src: url('../../static/font/SCDream2.otf');
+        }
+
+        @font-face {
+            font-family: Broadway;
+            src: url('../../static/font/BROADW.ttf');
+        }
+
+        h3 {
+            font-family: Broadway;
+        }
+
         h5 {
             font-size: 25px;
             color: white;
@@ -96,9 +110,6 @@
             cursor: pointer;
         }
 
-        .row {
-            margin-top: 10px;
-        }
 
         .card-body {
             width: 260px;
@@ -194,12 +205,15 @@
             padding: 5px 5px 10px 5px;
         }
 
-        .recomm {
+        h5.recomm {
             color: ivory;
-            display: block;
-            margin-left: 20px;
-            font-size: 20px;
-            width: 500px;
+            font-size: 30px;
+            display: flex;
+            margin: auto;
+            text-align: center;
+            height: 40px;
+            justify-content: center;
+            margin-bottom: 30px;
         }
 
         .h-100 {
@@ -232,7 +246,18 @@
             padding-left: 30px;
             align-items: center;
         }
-
+        .list_box {
+            background-image: linear-gradient(90deg, black, #1f1f1f, black);
+            height: 60px;
+            margin-bottom: 30px;
+        }
+        .list_box2 {
+            background-image: linear-gradient(90deg, #000000, #2c2c2c, black);
+            height: 120px;
+            margin-top: 30px;
+            padding-top: 20px;
+            justify-content: center;
+        }
         .main_post_box {
             width: 500px;
             height: 500px;
@@ -309,33 +334,34 @@
     </div>
 </div>
 </div>
-<br>
-<br>
-<br>
-<h5 class="recomm"><span style="color:red"><b>{{ request.user }}</b></span>님 취향 상위 5가지 드라마!</h5>
+<div class="list_box2">
+    <h5 class="recomm"><span style="color:red"><b>{{ request.user }}</b></span>님 취향 상위 5가지 드라마!</h5>
+</div>
 <div id="article_recomm" class="article_recomm">
-    <div class="row row-cols-1 row-cols-md-5 g-5">
-
-            {% for recom in recomm_articles %}
-                <div class="col">
-                    <div class="card h-100">
+    <div class="row row-cols-1 row-cols-md-5 g-5" style="background-color: #000000; padding-bottom: 30px">
+        {% for recom in recomm_articles %}
+            <div class="col">
+                <div class="card h-100" style="width: 250px">
+                    <a href="/article/{{ recom.id }}" style="text-decoration-line : none; color: black;">
+                        <img src="../static/img/poster/{{ recom.title }}.jpg" class="card-img-top"
+                             style="height: 300px; width: 220px">
+                    </a>
+                    <div class="card-body">
                         <a href="/article/{{ recom.id }}" style="text-decoration-line : none; color: black;">
-                            <img src="../static/img/poster/{{ recom.title }}.jpg" class="card-img-top"
-                                 style="height: 450px">
+                            <h5 class="card-title">{{ recom.title }}</h5>
                         </a>
-                        <div class="card-body">
-                            <a href="/article/{{ recom.id }}" style="text-decoration-line : none; color: black;">
-                                <h5 class="card-title">{{ recom.title }}</h5>
-                            </a>
-                            <p class="card-text"></p>
-                        </div>
+                        <p class="card-text"></p>
                     </div>
                 </div>
+            </div>
         {% endfor %}
-{#    {% for similarity in similarity %}#}
-{#        <p>{{ request.user }}님의 취향 유사도 {{ similarity }}</p>#}
-{#    {% endfor %}#}
+        {#    {% for similarity in similarity %}#}
+        {#        <p>{{ request.user }}님의 취향 유사도 {{ similarity }}</p>#}
+        {#    {% endfor %}#}
     </div>
+</div>
+<div class="list_box">
+    <h3 style="text-align: center; color: white; padding-top: 15px"> K DRAMA LIST </h3>
 </div>
 <div id="article" class="article">
     <div class="row row-cols-1 row-cols-md-4 g-4">

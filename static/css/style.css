@@ -4,7 +4,10 @@
     }
 }
 
-
+* {
+    font-family: "S-Core Dream 2";
+    src: url('../../static/font/SCDream2.otf');
+}
 
 .navbar {
     background-color: transparent;
