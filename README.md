@@ -34,6 +34,10 @@
 
 <img alt="Slack" src ="https://img.shields.io/badge/Slack-8A576D.svg?&style=for-the-badge&logo=Slack&logoColor=black"/>
 
+### ERD
+![KakaoTalk_20220602_193611357](https://user-images.githubusercontent.com/102009707/173728790-8527725e-d02c-4ec1-8062-d13876804897.png)
+
+
 ### 구현 기능
 
 **signin.html**
