@@ -37,6 +37,8 @@
 ### ERD
 ![KakaoTalk_20220602_193611357](https://user-images.githubusercontent.com/102009707/173728790-8527725e-d02c-4ec1-8062-d13876804897.png)
 
+### Figma Mock-up
+![이미지 228](https://user-images.githubusercontent.com/102009707/173729338-1826902a-a711-479b-820d-8f2fddea5bb0.png)
 
 ### 구현 기능
 
