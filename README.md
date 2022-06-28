@@ -1,16 +1,16 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=FF0000&height=150&section=header&text=K-drama%20Project&fontSize=30)
+![header](https://capsule-render.vercel.app/api?type=waving&color=bd71ff&height=150&section=header&text=Painting Production%20Project&fontSize=30)
 
-## ✨ Team\_ 호빈교
+## ✨ Team\_ 호빈과 도화살과 여우 그리고 우진
 
 ### 목표
 
 -   사물인식기능 활용
 -   GitHub 활용 및 효율적인 분업
--   Django를 활용하여 실력 높이기
+-   DRF를 활용하여 실력 높이기
 
 ### 개발 기간
 
--   06.02.22 ~ 06.14.22
+-   06.28.22 ~ 07.05.22
 
 ### 멤버구성 & 파트분배
 -   <a href="https://github.com/DingoFreestyle"><img 
@@ -18,13 +18,13 @@
           style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 이호빈 -> frontend, 발표 및 영상제작
 -   <a href="https://github.com/Moonmooj"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
-          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 문명주 -> frontend, R&D 담당
+          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 문명주 -> 백엔드, 딥러닝 담당
 -   <a href="https://github.com/woojin9606"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
-          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 백우진 -> 메인 git, backend(user)
+          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 백우진 -> 열정적인 응원과 박수 
 -   <a href="https://github.com/attabooi"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
-          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 최준헌 -> 추천시스템 모델 제작, backend(post)
+          style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 최준헌 -> 백엔드, 딥러닝 담당
 
 ### 적용
 
@@ -54,19 +54,19 @@
 
 **main.html**
 
-1. 검색기능
-2. 로그아웃기능
-3. 추천기능
-4. 각 드라마 상세페이지 이동
+1. 로그아웃기능
+2. 
+3. 
+4. 
 
 **detail.html**
 
-1. 댓글 및 별점 포스팅 및 리스팅
-2. 관련 추천 드라마 상세페이지 이동
+1. 로그아웃기능
+2. 
 
 ### 👀 기능구현동영상
 
 [![IMAGE ALT TEXT HERE](https://iboxcomein.com/wp-content/uploads/2021/08/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EB%A1%9C%EA%B3%A0.png)](https://www.youtube.com/watch?v=SqhBUMCGEAU)
 
 
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=FF0000&height=200&section=footer)
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=bd71ff&height=200&section=footer)
